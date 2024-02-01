@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <VAspirE.CompletedOn>Completed on: </VAspirE.CompletedOn>
+    <VAspirE.AspirationComplete>{0} has achieved their {1} aspiration.</VAspirE.AspirationComplete>
+    <VAspirE.AspirationStat>{0} aspirations complete: {1}</VAspirE.AspirationStat>
+    <VAspirE.Gains>{0} gains {1}: {2}</VAspirE.Gains>
+    <VAspirE.Implant>implant</VAspirE.Implant>
+    <VAspirE.Thought>thought</VAspirE.Thought>
+    <VAspirE.Xenotype>xenotype</VAspirE.Xenotype>
+    <VAspirE.Becomes>{0} becomes {1} to another.</VAspirE.Becomes>
+    <VAspirE.SatisfiedWhen>Satisfied when: </VAspirE.SatisfiedWhen>
+    <VAspireE.AspirationComplete>{0} has achieved their {1} aspiration.</VAspireE.AspirationComplete>
+</LanguageData>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.BioTech">
+        <defName>VAspirE_BecomeParent</defName>
+        <label>become a parent</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeParent</iconPath>
+        <description>{0} wants to become a parent and have a child of their own.</description>
+        <workerClass>VAspirE.AspirationWorker_CanHaveKids</workerClass>
+        <satisfiedRelation>Parent</satisfiedRelation>
+        <reverseRelationCheck>true</reverseRelationCheck>
+        <invalidXenotypes>
+            <li MayRequire="vanillaracesexpanded.android">VREA_AndroidBasic</li>
+            <li MayRequire="vanillaracesexpanded.android">VREA_AndroidAwakened</li>
+        </invalidXenotypes>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.BioTech">
+        <defName>VAspirE_BecomeGrandParent</defName>
+        <label>become a grandparent</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeGrandparent</iconPath>
+        <description>{0} wants to become a grandparent and have a grandchild.</description>
+        <workerClass>VAspirE.AspirationWorker_CanHaveKids</workerClass>
+        <satisfiedRelation>Grandparent</satisfiedRelation>
+        <reverseRelationCheck>true</reverseRelationCheck>
+        <invalidXenotypes>
+            <li MayRequire="vanillaracesexpanded.android">VREA_AndroidBasic</li>
+            <li MayRequire="vanillaracesexpanded.android">VREA_AndroidAwakened</li>
+        </invalidXenotypes>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.BioTech">
+        <defName>VAspirE_FormPsychicBond</defName>
+        <label>form a psychic bond</label>
+        <iconPath>UI/AspirationIcons/Aspiration_FormPsychicBond</iconPath>
+        <description>{0} wants to psychically bond with a highmate, a perfect partner.</description>
+        <invalidXenotypes>
+            <li>Highmate</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Bruxa</li>
+        </invalidXenotypes>
+        <satisfiedHediff>PsychicBond</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.BioTech">
+        <defName>VAspirE_BecomeSanguophage</defName>
+        <label>become a sanguophage</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeSanguophage</iconPath>
+        <description>{0} wants to live forever as a sanguophage.</description>
+        <invalidXenotypes>
+            <li MayRequire="vanillaracesexpanded.android">VREA_AndroidBasic</li>
+            <li MayRequire="vanillaracesexpanded.android">VREA_AndroidAwakened</li>
+            <li>Sanguophage</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Bruxa</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Ekkimian</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Strigoi</li>
+        </invalidXenotypes>
+        <satisfiedXenotypesAny>
+            <li>Sanguophage</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Bruxa</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Ekkimian</li>
+            <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Strigoi</li>
+        </satisfiedXenotypesAny>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.BioTech">
+        <defName>VAspirE_BecomeMechanitor</defName>
+        <label>become a mechanitor</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeMechanitor</iconPath>
+        <description>{0} wants to control the march of the machines.</description>
+        <satisfiedHediff>MechlinkImplant</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
+        <defName>VAspirE_BecomePsycaster</defName>
+        <label>become a psycaster</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomePsycaster</iconPath>
+        <description>{0} wants to become acquainted with the psychic powers of psycasters.</description>
+        <satisfiedHediff>PsychicAmplifier</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
+        <defName>VAspirE_AnimaTreeLink</defName>
+        <label>link with anima tree</label>
+        <iconPath>UI/AspirationIcons/Aspiration_LinkWithAnimaTree</iconPath>
+        <description>{0} wants to undergo an anima tree linking ritual with them as the main recipient of the boons.</description>
+        <workerClass>VAspirE.AspirationWorker_AnimaTreeLink</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
+        <defName>VAspirE_HearAnimaScream</defName>
+        <label>hear anima scream</label>
+        <iconPath>UI/AspirationIcons/Aspiration_HearAnimaScream</iconPath>
+        <description>{0} wants to hear the screams of a dying anima tree.</description>
+        <satisfiedThought>AnimaScream</satisfiedThought>
+        <requiredTrait>Psychopath</requiredTrait>
+        <requiredTraitsAny>
+            <PsychicSensitivity>-1</PsychicSensitivity>
+            <PsychicSensitivity>-2</PsychicSensitivity>
+        </requiredTraitsAny>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
+        <defName>VAspirE_BecomeNoble</defName>
+        <label>become noble</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeNoble</iconPath>
+        <description>{0} wants to join the imperial great hierarchy.</description>
+        <workerClass>VAspirE.AspirationWorker_BecomeNoble</workerClass>
+    </VAspirE.AspirationDef>
+</Defs>
