@@ -47,6 +47,31 @@ public class Need_Fulfillment : Need
         CheckCompletion();
     }
 
+    public void SetAspirations(List<AspirationDef> aspirationDefs)
+    {
+        CurLevelPercentage = 0f;
+        Aspirations = new();
+        completedTicks = new();
+        Rand.PushState(pawn.thingIDNumber);
+        var num = Rand.Bool ? 4 : 5;
+        for (var i = 0; i < num; i++)
+            if (i < aspirationDefs.Count)
+            {
+                Aspirations.Add(aspirationDefs[i]);
+                completedTicks.Add(-1);
+            }
+            else if (DefDatabase<AspirationDef>.AllDefs
+                    .Where(aspirationDef => aspirationDef.Worker.ValidOn(pawn) && !Aspirations.Contains(aspirationDef))
+                    .TryRandomElement(out var aspiration))
+            {
+                Aspirations.Add(aspiration);
+                completedTicks.Add(-1);
+            }
+
+        Rand.PopState();
+        CheckCompletion();
+    }
+
     public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1, bool drawArrows = true, bool doTooltip = true,
         Rect? rectForTooltip = null, bool drawLabel = true)
     {

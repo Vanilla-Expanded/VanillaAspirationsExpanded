@@ -14,6 +14,7 @@ public class AspirationsMod : Mod
 
         Harm.Patch(AccessTools.Method(typeof(Pawn_NeedsTracker), "RemoveNeed"), new(GetType(), nameof(NoRemovePermanent)));
         SatisfactionPatches.Apply(Harm);
+        GrowthMomentPatches.Apply(Harm);
     }
 
     public static bool NoRemovePermanent(NeedDef nd) => !nd.HasModExtension<NeedExtension_Permanent>();

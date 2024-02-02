@@ -10,4 +10,11 @@
     <VAspirE.Becomes>{0} becomes {1} to another.</VAspirE.Becomes>
     <VAspirE.SatisfiedWhen>Satisfied when: </VAspirE.SatisfiedWhen>
     <VAspireE.AspirationComplete>{0} has achieved their {1} aspiration.</VAspireE.AspirationComplete>
+    <VAspirE.SelectAspirationSingular>Select an aspiration.</VAspirE.SelectAspirationSingular>
+    <VAspirE.SelectAspirationsPlural>Select {0} aspirations.</VAspirE.SelectAspirationsPlural>
+    <VAspirE.BirthdaySelectAspirationSingular>Choose an aspiration for {0} to gain:</VAspirE.BirthdaySelectAspirationSingular>
+    <VAspirE.BirthdaySelectAspirationsPlural>Choose aspirations for {0} to gain:</VAspirE.BirthdaySelectAspirationsPlural>
+    <VAspirE.AspirationDesc>Aspirations are goals that {0} will want to achieve in their life. Achieving them will increase their mental break threshold, and if all aspirations are fulfilled, {0} will undergo another growth moment.</VAspirE.AspirationDesc>
+    <VAspirE.AspirationSelectionArchiveSingular>Aspiration {0} was gained.</VAspirE.AspirationSelectionArchiveSingular>
+    <VAspirE.AspirationSelectionArchivePlural>Aspirations were gained: {0}.</VAspirE.AspirationSelectionArchivePlural>
 </LanguageData>
