@@ -8,6 +8,8 @@
     <VAspirE.Thought>thought</VAspirE.Thought>
     <VAspirE.Xenotype>xenotype</VAspirE.Xenotype>
     <VAspirE.Becomes>{0} becomes {1} to another.</VAspirE.Becomes>
+    <VAspirE.Condition>condition</VAspirE.Condition>
+    <VAspirE.Prosthetic>prosthetic</VAspirE.Prosthetic>
     <VAspirE.SatisfiedWhen>Satisfied when: </VAspirE.SatisfiedWhen>
     <VAspireE.AspirationComplete>{0} has achieved their {1} aspiration.</VAspireE.AspirationComplete>
     <VAspirE.SelectAspirationSingular>Select an aspiration.</VAspirE.SelectAspirationSingular>

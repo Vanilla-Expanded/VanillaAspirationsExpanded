@@ -24,7 +24,11 @@ public class Need_Fulfillment : Need
     public override bool ShowOnNeedList => pawn.IsColonistPlayerControlled;
 
     public int NumCompleted => completedTicks.Count(tick => tick != -1);
-    public override void NeedInterval() { }
+
+    public override void NeedInterval()
+    {
+        CheckCompletion();
+    }
 
     public override void SetInitialLevel()
     {

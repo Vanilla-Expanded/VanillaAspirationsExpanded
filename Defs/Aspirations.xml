@@ -104,5 +104,319 @@
         <iconPath>UI/AspirationIcons/Aspiration_BecomeNoble</iconPath>
         <description>{0} wants to join the imperial great hierarchy.</description>
         <workerClass>VAspirE.AspirationWorker_BecomeNoble</workerClass>
+        <satisfiedWhenText>{0} becomes at least Yeoman.</satisfiedWhenText>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
+        <defName>VAspirE_WieldBladelink</defName>
+        <label>wield bladelink weapon</label>
+        <iconPath>UI/AspirationIcons/Aspiration_WieldBladelinkWeapon</iconPath>
+        <description>{0} would like to bond with a bladelink weapon.</description>
+        <workerClass>VAspirE.AspirationWorker_WieldBladelink</workerClass>
+        <satisfiedWhenText>{0} psychically bonds with a bladelink weapon.</satisfiedWhenText>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
+        <defName>VAspirE_AttendSpeech</defName>
+        <label>attend an inspirational throne speech</label>
+        <iconPath>UI/AspirationIcons/Aspiration_AttendInspirationalThroneSpeech</iconPath>
+        <description>{0} wants to be there when an inspirational speech is given.</description>
+        <satisfiedThought>InspirationalSpeech</satisfiedThought>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Ideology">
+        <defName>VAspirE_BecomeIdeologicalFigure</defName>
+        <label>become an ideological figure</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeIdeologicalFigure</iconPath>
+        <description>{0} wants to become a meaningful figure in their ideology.</description>
+        <workerClass>VAspirE.AspirationWorker_GainRole</workerClass>
+        <satisfiedWhenText>{0} gains any role in their ideology - leader, moralist, specialist.</satisfiedWhenText>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Ideology">
+        <defName>VAspirE_BecomeLeader</defName>
+        <label>become a leader</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeLeader</iconPath>
+        <description>{0} wants to lead their people from a position of power.</description>
+        <workerClass>VAspirE.AspirationWorker_GainRoleLeader</workerClass>
+        <satisfiedWhenText>{0} becomes an ideology Leader.</satisfiedWhenText>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Ideology">
+        <defName>VAspirE_ConnectWithGauranlenTree</defName>
+        <label>connect with a gauranlen tree</label>
+        <iconPath>UI/AspirationIcons/Aspiration_ConnectWithGauranlenTree</iconPath>
+        <description>{0} would love to connect with a Gauranlen tree in a tree linking ceremony.</description>
+        <workerClass>VAspirE.AspirationWorker_Manual</workerClass>
+        <satisfiedWhenText>{0} connects to a Gauranlen tree via tree linking ceremony.</satisfiedWhenText>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetMarried</defName>
+        <label>get married</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetMarried</iconPath>
+        <description>{0} would like to get married.</description>
+        <satisfiedRelation>Spouse</satisfiedRelation>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_Propose</defName>
+        <label>propose</label>
+        <iconPath>UI/AspirationIcons/Aspiration_Propose</iconPath>
+        <description>{0} would like to propose to somebody.</description>
+        <satisfiedRelation>Fiance</satisfiedRelation>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetSomeLovin</defName>
+        <label>propose</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetSomeLovin</iconPath>
+        <description>{0} would like to get some lovin’.</description>
+        <minimumAge>16</minimumAge>
+        <satisfiedRelation>Fiance</satisfiedRelation>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_ConsumeLuciferium</defName>
+        <label>consume luciferium</label>
+        <iconPath>UI/AspirationIcons/Aspiration_ConsumeLuciferium</iconPath>
+        <description>{0} wants to ride the luciferium high.</description>
+        <requiredTraitsAny>
+            <DrugDesire>2</DrugDesire>
+            <DrugDesire>1</DrugDesire>
+        </requiredTraitsAny>
+        <satisfiedHediff>LuciferiumAddiction</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_ConsumeHumanMeat</defName>
+        <label>consume human meat</label>
+        <iconPath>UI/AspirationIcons/Aspiration_ConsumeHumanMeat</iconPath>
+        <description>{0} wants to see what long pig tastes like.</description>
+        <requiredTrait>Psychopath</requiredTrait>
+        <satisfiedThoughtsAny>
+            <li>AteHumanlikeMeatDirect</li>
+            <li>AteHumanlikeMeatDirectCannibal</li>
+            <li>AteHumanlikeMeatAsIngredient</li>
+            <li>AteHumanlikeMeatAsIngredientCannibal</li>
+            <li>AteHumanMeat_Abhorrent</li>
+            <li>AteHumanMeat_Horrible</li>
+            <li>AteHumanMeat_Disapproved</li>
+            <li>AteHumanMeat_Preferred</li>
+            <li>AteHumanMeat_RequiredStrong</li>
+            <li>AteHumanMeat_RequiredRavenous</li>
+        </satisfiedThoughtsAny>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_Overdose</defName>
+        <label>overdose</label>
+        <iconPath>UI/AspirationIcons/Aspiration_Overdose</iconPath>
+        <description>{0} wants to see what it’s like to overdose.</description>
+        <requiredTraitsAny>
+            <DrugDesire>2</DrugDesire>
+            <DrugDesire>1</DrugDesire>
+        </requiredTraitsAny>
+        <satisfiedHediff>DrugOverdose</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetBlackoutDrunk</defName>
+        <label>get blackout drunk</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetBlackoutDrunk</iconPath>
+        <description>{0} wants to get absolutely shitfaced.</description>
+        <requiredTraitsAny>
+            <DrugDesire>2</DrugDesire>
+            <DrugDesire>1</DrugDesire>
+        </requiredTraitsAny>
+        <satisfiedHediff>AlcoholHigh</satisfiedHediff>
+        <satisfiedHediffSeverityRange>0.9~99999</satisfiedHediffSeverityRange>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetBeautifulLover</defName>
+        <label>get a beautiful lover</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetBeautifulLover</iconPath>
+        <description>{0} wants to be told that they are punching above their weight, and become lovers with a beautiful person.</description>
+        <workerClass>VAspirE.AspirationWorker_GetBeautifulLover</workerClass>
+        <satisfiedWhenText>{0} becomes lovers with a pawn that is Pretty or Beautiful.</satisfiedWhenText>
+        <invalidTraits>
+            <Beauty>2</Beauty>
+            <Beauty>1</Beauty>
+        </invalidTraits>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GrowOld</defName>
+        <label>grow old</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GrowOld</iconPath>
+        <description>{0} wants to live long enough to see a different person in the mirror.</description>
+        <invalidGenes>
+            <li>Ageless</li>
+        </invalidGenes>
+        <satisfiedWhenText>{0} gets birthday event/becomes 65, whichever comes first.</satisfiedWhenText>
+        <workerClass>VAspirE.AspirationWorker_GrowOld</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetJoywired</defName>
+        <label>get joywired</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetJoywired</iconPath>
+        <description>{0} would like to feel the effects of joywire.</description>
+        <invalidTraits>
+            <li>BodyPurist</li>
+        </invalidTraits>
+        <satisfiedHediff>Joywire</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetBionicSpine</defName>
+        <label>get bionic spine</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetBionicSpine</iconPath>
+        <description>{0} would love to have a bionic spine.</description>
+        <invalidTraits>
+            <li>BodyPurist</li>
+        </invalidTraits>
+        <satisfiedHediff>BionicSpine</satisfiedHediff>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_GetInspiration</defName>
+        <label>get inspiration</label>
+        <iconPath>UI/AspirationIcons/Aspiration_GetInspiration</iconPath>
+        <description>{0} aspires to be inspired.</description>
+        <satisfiedWhenText>{0} gains any inspiration.</satisfiedWhenText>
+        <workerClass>VAspirE.AspirationWorker_Manual</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_CreateLegendary</defName>
+        <label>create a legendary work</label>
+        <iconPath>UI/AspirationIcons/Aspiration_CreateLegendaryWork</iconPath>
+        <description>{0} wants to leave their mark on the world and create a legendary work.</description>
+        <satisfiedWhenText>{0} creates any legendary object - weapon, armor, sculpture, furniture, anything.</satisfiedWhenText>
+        <workerClass>VAspirE.AspirationWorker_Manual</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_ObtainLegendaryGear</defName>
+        <label>obtain legendary gear</label>
+        <iconPath>UI/AspirationIcons/Aspiration_CreateLegendaryWork</iconPath>
+        <description>{0} wants to feel the work of a legendary master in their grasp.</description>
+        <satisfiedWhenText>{0} equips a legendary weapon or wears legendary apparel of any kind.</satisfiedWhenText>
+        <workerClass>VAspirE.AspirationWorker_ObtainLegendaryGear</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_BondWithAnimal</defName>
+        <label>bond with an animal</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BondWithAnimal</iconPath>
+        <description>{0} wants to bond with an animal companion.</description>
+        <satisfiedRelation>Bond</satisfiedRelation>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_BecomeRich</defName>
+        <label>become rich</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeRich</iconPath>
+        <description>{0} wants their colony to prosper and become excessively rich.</description>
+        <satisfiedWhenText>{0}’s colony wealth exceeds 300.000.</satisfiedWhenText>
+        <invalidTraits>
+            <li>Ascetic</li>
+        </invalidTraits>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_KillSomeone</defName>
+        <label>kill someone</label>
+        <iconPath>UI/AspirationIcons/Aspiration_KillSomeone</iconPath>
+        <description>{0} wants to inflict pain and kill another being.</description>
+        <satisfiedWhenText>{0} kills a humanoid.</satisfiedWhenText>
+        <requiredTraitsAny>
+            <li>Psychopath</li>
+            <li>Bloodlust</li>
+            <li>Cannibal</li>
+        </requiredTraitsAny>
+        <requiredWorkTags>
+            <li>Violent</li>
+        </requiredWorkTags>
+        <workerClass>VAspirE.AspirationWorker_Manual</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_BecomeLiked</defName>
+        <label>become liked</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeLiked</iconPath>
+        <description>{0} wants to be liked by many of their peers.</description>
+        <satisfiedWhenText>{0} has 10 people with positive opinion about them.</satisfiedWhenText>
+        <workerClass>VAspirE.AspirationWorker_BecomeLiked</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_BecomeDisliked</defName>
+        <label>become disliked</label>
+        <iconPath>UI/AspirationIcons/Aspiration_BecomeDisliked</iconPath>
+        <description>{0} wants to be hated by many of their peers.</description>
+        <requiredTraitsAny>
+            <li>Psychopath</li>
+            <li>Bloodlust</li>
+            <li>Cannibal</li>
+        </requiredTraitsAny>
+        <satisfiedWhenText>{0} has 10 people with negative opinion about them.</satisfiedWhenText>
+        <workerClass>VAspirE.AspirationWorker_BecomeDisliked</workerClass>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_FeelCatharsis</defName>
+        <label>feel catharsis</label>
+        <iconPath>UI/AspirationIcons/Aspiration_FeelCatharsis</iconPath>
+        <description>{0} wants to unbottle their feelings and feel the serenity afterwards.</description>
+        <satisfiedThought>Catharsis</satisfiedThought>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_DefeatFactionLeader</defName>
+        <label>defeat faction leader</label>
+        <iconPath>UI/AspirationIcons/Aspiration_DefeatFactionLeader</iconPath>
+        <description>{0} wants to be the one to defeat an enemy faction leader.</description>
+        <satisfiedThought>DefeatedHostileFactionLeader</satisfiedThought>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_HaveWonderfulRoom</defName>
+        <label>have a wonderful room</label>
+        <iconPath>UI/AspirationIcons/Aspiration_HaveWonderfulRoom</iconPath>
+        <description>{0} wants to have the most wonderful bedroom.</description>
+        <requiredTraitsAny>
+            <li>Greedy</li>
+            <li>Jealous</li>
+        </requiredTraitsAny>
+        <satisfiedThought>SleptInBedroom</satisfiedThought>
+        <satisfiedThoughtDegreeRange>9~9</satisfiedThoughtDegreeRange>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_SeeAurora</defName>
+        <label>see an aurora</label>
+        <iconPath>UI/AspirationIcons/Aspiration_SeeAnAurora</iconPath>
+        <description>{0} wants to have the most wonderful bedroom.</description>
+        <satisfiedThought>Aurora</satisfiedThought>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_CompleteMachineBody</defName>
+        <label>complete machine body</label>
+        <iconPath>UI/AspirationIcons/Aspiration_CompleteMachineBody</iconPath>
+        <description>{0} would like to have 6 different artificial body parts.</description>
+        <satisfiedThought>ProsthophileHappy</satisfiedThought>
+        <satisfiedThoughtDegreeRange>5~5</satisfiedThoughtDegreeRange>
+    </VAspirE.AspirationDef>
+
+    <VAspirE.AspirationDef>
+        <defName>VAspirE_DeadRival</defName>
+        <label>dead rival</label>
+        <iconPath>UI/AspirationIcons/Aspiration_DeadRival</iconPath>
+        <description>{0} would like to have a rival, and for them to die.</description>
+        <satisfiedThought>PawnWithBadOpinionDied</satisfiedThought>
     </VAspirE.AspirationDef>
 </Defs>
