@@ -10,8 +10,11 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
 {
     private readonly List<AspirationDef> chosenAspirations = new();
 
-    public Dialog_GrowthMomentChoices_Aspirations(TaggedString text, ChoiceLetter_GrowthMoment letter) : base(text, letter)
+    private new readonly ChoiceLetter_GrowthMoment_Aspirations letter;
+
+    public Dialog_GrowthMomentChoices_Aspirations(TaggedString text, ChoiceLetter_GrowthMoment_Aspirations letter) : base(text, letter)
     {
+        this.letter = letter;
         if (AspirationSelectionsMade())
         {
             closeOnAccept = true;
@@ -24,13 +27,11 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
         }
     }
 
-    private ChoiceLetter_GrowthMoment_Aspirations Letter => letter as ChoiceLetter_GrowthMoment_Aspirations;
-
     private bool AspirationSelectionsMade() =>
         letter.ArchiveView
      || ((letter.passionChoices.NullOrEmpty() || !chosenPassions.NullOrEmpty() || letter.passionGainsCount <= 0)
       && (letter.traitChoices.NullOrEmpty() || chosenTrait != null)
-      && (Letter.aspirationChoices.NullOrEmpty() || !chosenAspirations.NullOrEmpty() || Letter.aspirationGainsCount <= 0));
+      && (letter.aspirationChoices.NullOrEmpty() || !chosenAspirations.NullOrEmpty() || letter.aspirationGainsCount <= 0));
 
     private AcceptanceReport CanCloseOverride()
     {
@@ -42,10 +43,10 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
         if (!letter.traitChoices.NullOrEmpty() && chosenTrait == null)
             return "SelectATrait".Translate();
 
-        if (!Letter.aspirationChoices.NullOrEmpty() && chosenAspirations.Count != Letter.aspirationGainsCount)
-            return Letter.aspirationGainsCount == 1
+        if (!letter.aspirationChoices.NullOrEmpty() && chosenAspirations.Count != letter.aspirationGainsCount)
+            return letter.aspirationGainsCount == 1
                 ? "VAspirE.SelectAspirationSingular".Translate()
-                : "VAspirE.SelectAspirationsPlural".Translate(Letter.aspirationGainsCount);
+                : "VAspirE.SelectAspirationsPlural".Translate(letter.aspirationGainsCount);
 
         if (!AspirationSelectionsMade())
             return "BirthdayMakeChoices".Translate();
@@ -55,21 +56,21 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
 
     private void DrawAspirationChoices(float width, ref float curY)
     {
-        if (!letter.ArchiveView && !Letter.aspirationChoices.NullOrEmpty() && Letter.aspirationGainsCount > 0)
+        if (!letter.ArchiveView && !letter.aspirationChoices.NullOrEmpty() && letter.aspirationGainsCount > 0)
         {
             Widgets.Label(0, ref curY, width,
-                (Letter.aspirationGainsCount == 1
+                (letter.aspirationGainsCount == 1
                     ? "VAspirE.BirthdaySelectAspirationSingular"
                     : "VAspirE.BirthdaySelectAspirationsPlural").Translate(letter.pawn.NameShortColored));
 
             var listing = new Listing_Standard();
             var rect = new Rect(0f, curY, 230f, 99999f);
             listing.Begin(rect);
-            foreach (var aspirationDef in Letter.aspirationChoices)
+            foreach (var aspirationDef in letter.aspirationChoices)
             {
                 GUI.DrawTexture(new(rect.xMax - 55f, listing.CurHeight, 24f, 24f), aspirationDef.Icon);
 
-                if (Letter.aspirationGainsCount > 1)
+                if (letter.aspirationGainsCount > 1)
                 {
                     var active = chosenAspirations.Contains(aspirationDef);
                     var oldActive = active;
@@ -96,11 +97,11 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
             curY += 14;
         }
 
-        if (letter.ArchiveView && !Letter.chosenAspirations.NullOrEmpty())
+        if (letter.ArchiveView && !letter.chosenAspirations.NullOrEmpty())
         {
-            Widgets.Label(0f, ref curY, width, Letter.chosenAspirations.Count == 1
-                ? "VAspirE.AspirationSelectionArchiveSingular".Translate(Letter.chosenAspirations[0].LabelCap)
-                : "VAspirE.AspirationSelectionArchivePlural".Translate(Letter.chosenAspirations.Select(aspir => aspir.LabelCap.Resolve()).ToCommaList(true)));
+            Widgets.Label(0f, ref curY, width, letter.chosenAspirations.Count == 1
+                ? "VAspirE.AspirationSelectionArchiveSingular".Translate(letter.chosenAspirations[0].LabelCap)
+                : "VAspirE.AspirationSelectionArchivePlural".Translate(letter.chosenAspirations.Select(aspir => aspir.LabelCap.Resolve()).ToCommaList(true)));
             curY += 14f;
         }
     }
@@ -156,7 +157,7 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
         {
             if (canClose.Accepted)
             {
-                Letter.MakeAspirationChoices(chosenAspirations);
+                letter.MakeAspirationChoices(chosenAspirations);
                 letter.MakeChoices(chosenPassions, chosenTrait);
                 Close();
                 Find.LetterStack.RemoveLetter(letter);

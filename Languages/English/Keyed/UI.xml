@@ -17,4 +17,6 @@
     <VAspirE.AspirationDesc>Aspirations are goals that {0} will want to achieve in their life. Achieving them will increase their mental break threshold, and if all aspirations are fulfilled, {0} will undergo another growth moment.</VAspirE.AspirationDesc>
     <VAspirE.AspirationSelectionArchiveSingular>Aspiration {0} was gained.</VAspirE.AspirationSelectionArchiveSingular>
     <VAspirE.AspirationSelectionArchivePlural>Aspirations were gained: {0}.</VAspirE.AspirationSelectionArchivePlural>
+    <VAspirE.FullfilledGrowthMoment>{0} has achieved fulfillment from their aspirations and has experienced a growth moment.</VAspirE.FullfilledGrowthMoment>
+    <VAspirE.FullfilledGrowthMoment.Desc>{0_pronoun} has demonstrated excellent determination in meeting their lifelong goals and is incredibly content with what they have achieved in their life. {0_nameDef} hopes that they have made a difference in the world.</VAspirE.FullfilledGrowthMoment.Desc>
 </LanguageData>

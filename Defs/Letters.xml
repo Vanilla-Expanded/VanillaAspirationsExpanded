@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <LetterDef ParentName="PositiveEvent">
+        <defName>VAspirE_Fulfilled</defName>
+        <letterClass>VAspirE.ChoiceLetter_AspirationsFulfilled</letterClass>
+        <arriveSound>ChildBecomesAdult</arriveSound>
+      </LetterDef>
+</Defs>

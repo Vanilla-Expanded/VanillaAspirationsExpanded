@@ -107,7 +107,9 @@ public class Need_Fulfillment : Need
         CurLevel += 1;
         if (CurLevel >= 4)
         {
-            // Growth moment
+            var letter = (ChoiceLetter_AspirationsFulfilled)LetterMaker.MakeLetter(AspirationDefOf.VAspirE_Fulfilled);
+            letter.ConfigureFulfillmentLetter(pawn);
+            Find.LetterStack.ReceiveLetter(letter, "AspirationsFulilled");
         }
     }
 

@@ -6,7 +6,7 @@
         <label>fulfillment</label>
         <description>Fulfillment represents how happy someone is with their personal achievements in life. If they achieve their dreams and complete their lifetime goals, the fulfillment will increase. Each stage of fulfillment decreases mental break threshold. Achieving maximum fulfillment will result in a final growth moment.</description>
         <baseLevel>0</baseLevel>
-        <listPriority>50</listPriority>
+        <listPriority>-100</listPriority>
         <minIntelligence>Humanlike</minIntelligence>
         <colonistsOnly>true</colonistsOnly>
         <neverOnPrisoner>true</neverOnPrisoner>

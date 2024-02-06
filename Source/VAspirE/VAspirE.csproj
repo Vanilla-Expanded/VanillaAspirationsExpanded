@@ -65,7 +65,9 @@
     <Compile Include="AspirationsMod.cs" />
     <Compile Include="AspirationsUtility.cs" />
     <Compile Include="AspirationWorkers.cs" />
+    <Compile Include="ChoiceLetter_AspirationsFulfilled.cs" />
     <Compile Include="ChoiceLetter_GrowthMoment_Aspirations.cs" />
+    <Compile Include="Dialog_AspirationsFulfilled.cs" />
     <Compile Include="Dialog_GrowthMomentChoices_Aspirations.cs" />
     <Compile Include="GrowthMomentPatches.cs" />
     <Compile Include="Need_Fulfillment.cs" />
