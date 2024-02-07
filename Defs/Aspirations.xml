@@ -169,7 +169,7 @@
 
     <VAspirE.AspirationDef>
         <defName>VAspirE_GetSomeLovin</defName>
-        <label>propose</label>
+        <label>get some lovin'</label>
         <iconPath>UI/AspirationIcons/Aspiration_GetSomeLovin</iconPath>
         <description>{0} would like to get some lovin’.</description>
         <minimumAge>16</minimumAge>
@@ -399,7 +399,7 @@
         <defName>VAspirE_SeeAurora</defName>
         <label>see an aurora</label>
         <iconPath>UI/AspirationIcons/Aspiration_SeeAnAurora</iconPath>
-        <description>{0} wants to have the most wonderful bedroom.</description>
+        <description>{0} wants to skygaze during an aurora.</description>
         <satisfiedThought>Aurora</satisfiedThought>
     </VAspirE.AspirationDef>
 
