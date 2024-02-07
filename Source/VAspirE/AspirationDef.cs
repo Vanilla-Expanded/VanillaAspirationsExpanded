@@ -69,7 +69,8 @@ public class AspirationDef : Def
 
                 if (satisfiedThoughtDegreeRange.min > int.MinValue || satisfiedThoughtDegreeRange.max < int.MaxValue)
                 {
-                    var stages = satisfiedThought.stages.GetRange(satisfiedThoughtDegreeRange.min, satisfiedThoughtDegreeRange.max);
+                    var stages = satisfiedThought.stages.GetRange(satisfiedThoughtDegreeRange.min,
+                        satisfiedThoughtDegreeRange.max - satisfiedThoughtDegreeRange.min + 1);
                     var stage = stages.FirstOrDefault(s => s.label != null);
                     if (stage != null) satisfiedLabel = stage.LabelCap;
                 }

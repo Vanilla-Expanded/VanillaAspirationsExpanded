@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -127,10 +128,33 @@ public class Need_Fulfillment : Need
     public void CheckCompletion()
     {
         foreach (var aspirationDef in Aspirations)
-            if (!IsComplete(aspirationDef))
-                if (aspirationDef.Worker.IsCompleted(pawn))
-                    Complete(aspirationDef);
+            try
+            {
+                if (!IsComplete(aspirationDef))
+                    if (aspirationDef.Worker.IsCompleted(pawn))
+                        Complete(aspirationDef);
+            }
+            catch (Exception e) { Log.Error($"[VAspirE] Exception while checking completion of {aspirationDef}: {e}"); }
     }
+
+    public void DebugAddAspiration(AspirationDef def)
+    {
+        Aspirations.Add(def);
+        completedTicks.Add(-1);
+    }
+
+    public void DebugRemoveAspiration(AspirationDef def)
+    {
+        var i = Aspirations.IndexOf(def);
+        if (i == -1) return;
+        Aspirations.RemoveAt(i);
+        completedTicks.RemoveAt(i);
+    }
+
+//    public void DebugResetCompletion()
+//    {
+//        for (var i = 0; i < completedTicks.Count; i++) completedTicks[i] = -1;
+//    }
 
     public override void ExposeData()
     {

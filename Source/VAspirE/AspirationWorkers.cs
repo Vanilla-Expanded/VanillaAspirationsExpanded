@@ -87,6 +87,7 @@ public class AspirationWorker_BecomeLiked : AspirationWorker
 
     public override bool IsCompleted(Pawn pawn)
     {
+        if (Current.ProgramState == ProgramState.MapInitializing) return false;
         var count = 0;
         foreach (var otherPawn in pawn.relations.RelatedPawns.Concat(SocialCardUtility.PawnsForSocialInfo(pawn)))
             if (otherPawn.relations.OpinionOf(pawn) > 0)
