@@ -32,7 +32,7 @@
         <defName>VAspirE_FormPsychicBond</defName>
         <label>form a psychic bond</label>
         <iconPath>UI/AspirationIcons/Aspiration_FormPsychicBond</iconPath>
-        <description>{0} wants to psychically bond with a highmate, a perfect partner.</description>
+        <description>{0} wants to psychically bond with a perfect partner.</description>
         <invalidXenotypes>
             <li>Highmate</li>
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Bruxa</li>
