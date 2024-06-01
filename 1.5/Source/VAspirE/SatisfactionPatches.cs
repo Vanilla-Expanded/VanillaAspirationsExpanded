@@ -35,12 +35,12 @@ public static class SatisfactionPatches
             postfix: new(typeof(SatisfactionPatches), nameof(OnInspiration)));
         harm.Patch(AccessTools.Method(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), new[] { typeof(Pawn), typeof(SkillDef) }),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckQuality)));
-        /*harm.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Wear)),
+        harm.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Wear)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(RecordsUtility), nameof(RecordsUtility.Notify_PawnKilled)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnPawnKilled)));
-        harm.Patch(AccessTools.Method(typeof(SituationalThoughtHandler), nameof(SituationalThoughtHandler.CheckRecalculateMoodThoughts)),
-            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));*/
+        harm.Patch(AccessTools.Method(typeof(SituationalThoughtHandler), nameof(SituationalThoughtHandler.UpdateAllMoodThoughts)),
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
     }
 
     public static void CheckGeneral(Pawn ___pawn)

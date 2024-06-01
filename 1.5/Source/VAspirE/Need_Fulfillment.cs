@@ -90,7 +90,12 @@ public class Need_Fulfillment : Need
             aspirRect.width /= 5;
             aspirRect.x += aspirRect.width * i;
 
-            GUI.DrawTexture(aspirRect, Aspirations[i].Icon);
+            if (Aspirations[i].Worker.IsCompleted(this.pawn))
+            {
+                GUI.DrawTexture(aspirRect, Aspirations[i].Icon);
+            }
+            else { GUI.DrawTexture(aspirRect, Aspirations[i].Icon, ScaleMode.ScaleToFit, true, 1, Color.gray, 0, 0); }
+            
             if (Mouse.IsOver(aspirRect))
             {
                 Widgets.DrawHighlight(aspirRect);
