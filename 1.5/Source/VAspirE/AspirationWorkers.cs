@@ -55,7 +55,7 @@ public class AspirationWorker_GetBeautifulLover : AspirationWorker
 {
     public AspirationWorker_GetBeautifulLover(AspirationDef def) : base(def) { }
 
-    public override bool IsCompleted(Pawn pawn) => pawn.GetLoveCluster().Any(p => p.story?.traits?.GetTrait(TraitDefOf.Beauty) is { Degree: >= 1 });
+    public override bool IsCompleted(Pawn pawn) => pawn.GetLoveCluster().Any(p => p.story?.traits?.GetTrait(InternalDefOf.Beauty) is { Degree: >= 1 });
 }
 
 public class AspirationWorker_GrowOld : AspirationWorker

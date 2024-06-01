@@ -16,7 +16,7 @@ public static class SatisfactionPatches
             postfix: new(typeof(SatisfactionPatches), nameof(OnTreeLinkPsychic)));
         harm.Patch(AccessTools.Method(typeof(MemoryThoughtHandler), nameof(MemoryThoughtHandler.TryGainMemory), new[] { typeof(Thought_Memory), typeof(Pawn) }),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
-        harm.Patch(AccessTools.Method(typeof(Pawn_RoyaltyTracker), "OnPostTitleChanged"),
+       harm.Patch(AccessTools.Method(typeof(Pawn_RoyaltyTracker), "OnPostTitleChanged"),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(Pawn_GeneTracker), nameof(Pawn_GeneTracker.SetXenotypeDirect)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
@@ -27,7 +27,7 @@ public static class SatisfactionPatches
         foreach (var type in typeof(Precept_Role).AllSubclassesNonAbstract())
             harm.Patch(AccessTools.Method(type, nameof(Precept_Role.Assign)),
                 postfix: new(typeof(SatisfactionPatches), nameof(CheckArgP)));
-        harm.Patch(AccessTools.Method(typeof(RitualOutcomeEffectWorker_ConnectToTree), nameof(RitualOutcomeEffectWorker_ConnectToTree.Apply)),
+         harm.Patch(AccessTools.Method(typeof(RitualOutcomeEffectWorker_ConnectToTree), nameof(RitualOutcomeEffectWorker_ConnectToTree.Apply)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnTreeLinkGauranlen)));
         harm.Patch(AccessTools.Method(typeof(Pawn_AgeTracker), nameof(Pawn_AgeTracker.BirthdayBiological)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
@@ -35,12 +35,12 @@ public static class SatisfactionPatches
             postfix: new(typeof(SatisfactionPatches), nameof(OnInspiration)));
         harm.Patch(AccessTools.Method(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), new[] { typeof(Pawn), typeof(SkillDef) }),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckQuality)));
-        harm.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Wear)),
+        /*harm.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Wear)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(RecordsUtility), nameof(RecordsUtility.Notify_PawnKilled)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnPawnKilled)));
         harm.Patch(AccessTools.Method(typeof(SituationalThoughtHandler), nameof(SituationalThoughtHandler.CheckRecalculateMoodThoughts)),
-            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));*/
     }
 
     public static void CheckGeneral(Pawn ___pawn)
@@ -54,7 +54,8 @@ public static class SatisfactionPatches
         pawn?.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_AnimaTreeLink);
     }
 
-    public static void CheckArgP(Pawn p)
+    public static void CheckArgP(Pawn p,bool addThoughts)
+
     {
         p?.needs?.Fulfillment()?.CheckCompletion();
     }

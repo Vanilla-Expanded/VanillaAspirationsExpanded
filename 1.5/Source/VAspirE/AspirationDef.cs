@@ -139,7 +139,7 @@ public class AspirationWorker
 
         if (!def.invalidTraits.NullOrEmpty() && def.invalidTraits.Any(trait => trait.HasTrait(pawn))) return false;
 
-        if (!def.invalidGenes.NullOrEmpty() && def.invalidGenes.Any(gene => pawn.genes.HasGene(gene))) return false;
+        if (!def.invalidGenes.NullOrEmpty() && def.invalidGenes.Any(gene => pawn.genes.HasActiveGene(gene))) return false;
 
         if (def.requiredWorkTags != WorkTags.None && pawn.WorkTagIsDisabled(def.requiredWorkTags)) return false;
 
