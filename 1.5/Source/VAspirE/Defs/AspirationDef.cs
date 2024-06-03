@@ -265,6 +265,20 @@ public class AspirationWorker
             if (abilities.Where(x=> x.def.level>= def.satisfiedAbilityLevel).Count()>0){          
                 return true;
             }
+
+            HediffDef hediffDef = DefDatabase<HediffDef>.GetNamedSilentFail("VPE_PsycastAbilityImplant");
+            if (hediffDef!=null)
+            {
+                Hediff_Level hediff = (Hediff_Level)pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
+                if(hediff != null)
+                {
+                    if(hediff.level>= def.satisfiedAbilityLevel)
+                    {
+                        return true;
+                    }
+                }
+            }
+            
         }
 
         if (def.satisfiedThought != null && pawn.needs?.mood?.thoughts != null)
