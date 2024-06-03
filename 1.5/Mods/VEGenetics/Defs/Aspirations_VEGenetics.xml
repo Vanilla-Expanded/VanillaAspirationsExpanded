@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_NuzzleWithTheFleshling</defName>
+		<label>nuzzle with the fleshling</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} would like to nuzzle with the fleshling monstrosity.</description>
+		<satisfiedNuzzledByAny><li>GR_Fleshling</li></satisfiedNuzzledByAny>
+	</VAspirE.AspirationDef>
+</Defs>

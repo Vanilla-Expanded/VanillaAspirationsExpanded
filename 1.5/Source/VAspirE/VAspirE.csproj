@@ -309,6 +309,7 @@
     <Compile Include="Defs\AspirationDef.cs" />
     <Compile Include="DefOfs\AspirationDefOf.cs" />
     <Compile Include="Mod\AspirationsMod.cs" />
+    <Compile Include="StaticCollections\StaticCollectionsClass.cs" />
     <Compile Include="Utility\AspirationsUtility.cs" />
     <Compile Include="AspirationWorkers\AspirationWorkers.cs" />
     <Compile Include="ChoiceLetters\ChoiceLetter_AspirationsFulfilled.cs" />

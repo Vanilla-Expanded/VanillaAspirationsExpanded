@@ -11,6 +11,8 @@
 	<VAspirE.Abilities>abilities</VAspirE.Abilities>
 	<VAspirE.Trait>trait</VAspirE.Trait>
 	<VAspirE.Gene>gene</VAspirE.Gene>
+	<VAspirE.NuzzledBy>{0} nuzzled by: {1}</VAspirE.NuzzledBy>
+	<VAspirE.Wealth>{0} is in a colony with greater than {1} wealth</VAspirE.Wealth>
 	<VAspirE.Title>royal title</VAspirE.Title>
     <VAspirE.Becomes>{0} becomes {1} to another.</VAspirE.Becomes>
 	<VAspirE.BecomesList>{0} becomes {1} to one of these: {2}.</VAspirE.BecomesList>

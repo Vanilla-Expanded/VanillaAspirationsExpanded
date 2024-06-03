@@ -34,6 +34,10 @@ public class AspirationDef : Def
     public List<GeneDef> satisfiedGenesAny;
     public RoyalTitleDef satisfiedRoyalTitle;
     public List<AbilityDef> satisfiedAbilitiesAny;
+    public List<RitualBehaviorDef> satisfiedRitualOutcomesAny;
+    public List<ThingDef> satisfiedNuzzledByAny;
+    public int satisfiedColonyWealth;
+
     public int satisfiedAbilityLevel;
     public Type workerClass = typeof(AspirationWorker);
     private Texture2D icon;
@@ -87,9 +91,22 @@ public class AspirationDef : Def
                 type = "VAspirE.Thought".Translate();
                 satisfiedLabel = satisfiedThoughtsAny.Select(t => t.LabelCap.Resolve()).Distinct().ToCommaListOr();
             }
+
+            else if (satisfiedNuzzledByAny is { Count: >= 1 })
+            {
+
+                List<string> names = satisfiedNuzzledByAny.Select(x => x.LabelCap.Resolve()).ToList();
+                return "VAspirE.NuzzledBy".Translate(pawn.NameShortColored, names.ToCommaListOr());
+            }
+            else if (satisfiedColonyWealth >0)
+            {
+               
+                return "VAspirE.Wealth".Translate(pawn.NameShortColored, satisfiedColonyWealth);
+            }
+
             else if (satisfiedRelation != null)
             {
-                if (!thingDefsForRelation.NullOrEmpty())
+                if (thingDefsForRelation.NullOrEmpty())
                 {
                     return "VAspirE.Becomes".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn));
                 }
@@ -242,6 +259,33 @@ public class AspirationWorker
                 if (pawn.genes.HasActiveGene(geneDef))
                     return true;
 
+        if (!def.satisfiedRitualOutcomesAny.NullOrEmpty())
+        {
+            foreach (var ritualOutcome in def.satisfiedRitualOutcomesAny)
+            {
+                if (StaticCollectionsClass.rituals_and_pawns.ContainsKey(ritualOutcome))
+                {
+                    if (StaticCollectionsClass.rituals_and_pawns[ritualOutcome].Contains(pawn))
+                    {
+                        return true;
+                    }
+                }                   
+            }               
+        }
+        if (!def.satisfiedNuzzledByAny.NullOrEmpty())
+        {
+            foreach (var thingDef in def.satisfiedNuzzledByAny)
+            {
+                if (StaticCollectionsClass.pawns_nuzzled.ContainsKey(pawn))
+                {
+                    if (StaticCollectionsClass.pawns_nuzzled[pawn].def == thingDef)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
         if (ModsConfig.RoyaltyActive && def.satisfiedRoyalTitle != null)
         {
             if (pawn.royalty.HasAnyTitleIn(Faction.OfEmpire) && (pawn.royalty.HasTitle(def.satisfiedRoyalTitle) ||
@@ -253,6 +297,13 @@ public class AspirationWorker
         if (def.satisfiedTrait != null)
         {
             if (pawn.story.traits.HasTrait(def.satisfiedTrait))
+            {
+                return true;
+            }
+        }
+        if (def.satisfiedColonyWealth > 0)
+        {
+            if (WealthUtility.PlayerWealth>= def.satisfiedColonyWealth)
             {
                 return true;
             }

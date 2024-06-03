@@ -11,7 +11,8 @@
 		<li IfModActive="VanillaExpanded.VAERoy">1.5/Mods/VAERoyal</li>
 		<li IfModActive="OskarPotocki.VFE.Classical">1.5/Mods/VFEClassical</li>
 		<li IfModActive="OskarPotocki.VFE.Pirates">1.5/Mods/VFEPirates</li>
-
+		<li IfModActive="OskarPotocki.VFE.Tribals">1.5/Mods/VFETribals</li>
+		<li IfModActive="VanillaExpanded.VGeneticsE">1.5/Mods/VEGenetics</li>
 		
 	</v1.5>
 </loadFolders>

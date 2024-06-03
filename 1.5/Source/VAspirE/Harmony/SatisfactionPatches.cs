@@ -47,7 +47,10 @@ public static class SatisfactionPatches
            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(TraitSet), nameof(TraitSet.GainTrait)),
            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
-
+        harm.Patch(AccessTools.Method(typeof(RitualBehaviorWorker), nameof(RitualBehaviorWorker.Cleanup)),
+           postfix: new(typeof(SatisfactionPatches), nameof(CheckRituals)));
+        harm.Patch(AccessTools.Method(typeof(JobDriver_Nuzzle), nameof(JobDriver_Nuzzle.MakeNewToils)),
+           postfix: new(typeof(SatisfactionPatches), nameof(CheckNuzzlers)));
 
 
     }
@@ -92,5 +95,21 @@ public static class SatisfactionPatches
         if (killed.RaceProps.Humanlike) killer.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_KillSomeone);
     }
 
-    
+    public static void CheckRituals(LordJob_Ritual ritual, RitualBehaviorWorker __instance)
+    {
+        List<Pawn> listOfPawns = ritual.PawnsToCountTowardsPresence.ToList();
+        StaticCollectionsClass.rituals_and_pawns.Add(__instance.def, listOfPawns);
+        foreach(Pawn pawn in PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction)
+        {
+            pawn?.needs?.Fulfillment()?.CheckCompletion();
+        }
+        StaticCollectionsClass.rituals_and_pawns.Clear();
+    }
+    public static void CheckNuzzlers(JobDriver_Nuzzle __instance)
+    {       
+        StaticCollectionsClass.pawns_nuzzled.Add(__instance.TargetA.Pawn,__instance.pawn);
+        __instance.TargetA.Pawn?.needs?.Fulfillment()?.CheckCompletion();
+        StaticCollectionsClass.pawns_nuzzled.Clear();
+    }
+
 }
