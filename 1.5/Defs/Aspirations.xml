@@ -422,7 +422,7 @@
         <satisfiedThought>PawnWithBadOpinionDied</satisfiedThought>
     </VAspirE.AspirationDef>
 	
-		<VAspirE.AspirationDef>
+	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
 		<defName>VAspirE_GainALevel5Psycast</defName>
 		<label>gain a level five psycast</label>
 		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
