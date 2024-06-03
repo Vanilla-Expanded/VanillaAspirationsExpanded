@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.BioTech">
+		<defName>VAspirE_BecomeTranscendent</defName>
+		<label>become transcendent</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to become one of the transcendent.</description>
+		<satisfiedGenesAny>
+			<li>VRE_Transcendent</li>
+		</satisfiedGenesAny>
+	</VAspirE.AspirationDef>
+</Defs>

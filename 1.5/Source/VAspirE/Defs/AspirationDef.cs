@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using UnityEngine;
+using UnityEngine.Networking;
 using Verse;
 
 namespace VAspirE;
@@ -18,16 +19,22 @@ public class AspirationDef : Def
     public List<SkillDef> requiredSkills;
     public TraitDef requiredTrait;
     public List<TraitRequirement> requiredTraitsAny;
+    public TraitDef satisfiedTrait;
     public WorkTags requiredWorkTags = WorkTags.None;
     public bool reverseRelationCheck;
     public HediffDef satisfiedHediff;
     public FloatRange satisfiedHediffSeverityRange = new(float.MinValue, float.MaxValue);
     public PawnRelationDef satisfiedRelation;
+    public List<ThingDef> thingDefsForRelation;
     public ThoughtDef satisfiedThought;
     public IntRange satisfiedThoughtDegreeRange = new(int.MinValue, int.MaxValue);
     public List<ThoughtDef> satisfiedThoughtsAny;
     public string satisfiedWhenText;
     public List<XenotypeDef> satisfiedXenotypesAny;
+    public List<GeneDef> satisfiedGenesAny;
+    public RoyalTitleDef satisfiedRoyalTitle;
+    public List<AbilityDef> satisfiedAbilitiesAny;
+    public int satisfiedAbilityLevel;
     public Type workerClass = typeof(AspirationWorker);
     private Texture2D icon;
     private AspirationWorker worker;
@@ -81,11 +88,47 @@ public class AspirationDef : Def
                 satisfiedLabel = satisfiedThoughtsAny.Select(t => t.LabelCap.Resolve()).Distinct().ToCommaListOr();
             }
             else if (satisfiedRelation != null)
-                return "VAspirE.Becomes".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn));
+            {
+                if (!thingDefsForRelation.NullOrEmpty())
+                {
+                    return "VAspirE.Becomes".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn));
+                }
+                else { 
+                    List<string> names = thingDefsForRelation.Select(x => x.LabelCap.Resolve()).ToList();
+                    return "VAspirE.BecomesList".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn), names.ToCommaListOr()); 
+                
+                }
+            }
+            else if (satisfiedAbilityLevel !=0)
+            {
+                type = "VAspirE.AbilityLevel".Translate();
+                satisfiedLabel = satisfiedAbilityLevel.ToString();
+            }
+            else if (satisfiedTrait != null)
+            {
+                type = "VAspirE.Trait".Translate();
+                satisfiedLabel = satisfiedTrait.degreeDatas.First().LabelCap;
+            }
+
             else if (satisfiedXenotypesAny is { Count: >= 1 })
             {
                 type = "VAspirE.Xenotype".Translate();
                 satisfiedLabel = satisfiedXenotypesAny.Select(x => x.LabelCap.Resolve()).Distinct().ToCommaListOr();
+            }
+            else if (satisfiedAbilitiesAny is { Count: >= 1 })
+            {
+                type = "VAspirE.Abilities".Translate();
+                satisfiedLabel = satisfiedAbilitiesAny.Select(x => x.LabelCap.Resolve()).Distinct().ToCommaListOr();
+            }
+            else if (satisfiedRoyalTitle != null)
+            {
+                type = "VAspirE.Title".Translate();
+                satisfiedLabel = satisfiedRoyalTitle.LabelCap;
+            }
+            else if (satisfiedGenesAny is { Count: >= 1 })
+            {
+                type = "VAspirE.Gene".Translate();
+                satisfiedLabel = satisfiedGenesAny.Select(x => x.LabelCap.Resolve()).Distinct().ToCommaListOr();
             }
             else
             {
@@ -148,19 +191,33 @@ public class AspirationWorker
 
     public virtual bool IsCompleted(Pawn pawn)
     {
-        if (def.satisfiedRelation != null && pawn.relations != null)
-            foreach (var otherPawn in pawn.relations.PotentiallyRelatedPawns)
-                if (def.reverseRelationCheck)
-                {
-                    if (def.satisfiedRelation.Worker.InRelation(otherPawn, pawn))
-                        return true;
-                }
-                else
-                {
-                    if (def.satisfiedRelation.Worker.InRelation(pawn, otherPawn))
-                        return true;
-                }
+        if (def.satisfiedRelation != null && pawn.relations != null) {
 
+            List<Pawn> listToCheck = new List<Pawn>();
+            if (def.thingDefsForRelation.NullOrEmpty())
+            {
+                listToCheck = pawn.relations.PotentiallyRelatedPawns.ToList();
+            }
+            else
+            {
+                listToCheck = pawn.relations.PotentiallyRelatedPawns.Where(x => def.thingDefsForRelation.Contains(x.def)).ToList();
+            }
+            if(!listToCheck.NullOrEmpty())
+            {
+                foreach (var otherPawn in listToCheck)
+                    if (def.reverseRelationCheck)
+                    {
+                        if (def.satisfiedRelation.Worker.InRelation(otherPawn, pawn))
+                            return true;
+                    }
+                    else
+                    {
+                        if (def.satisfiedRelation.Worker.InRelation(pawn, otherPawn))
+                            return true;
+                    }
+            }
+           
+        }
         if (def.satisfiedHediff != null && pawn.health?.hediffSet != null)
         {
             var hediffs = new List<Hediff>();
@@ -174,6 +231,41 @@ public class AspirationWorker
             foreach (var xenotypeDef in def.satisfiedXenotypesAny)
                 if (pawn.genes.Xenotype == xenotypeDef)
                     return true;
+
+        if (!def.satisfiedAbilitiesAny.NullOrEmpty() && pawn.abilities != null)
+            foreach (var abilityDef in def.satisfiedAbilitiesAny)
+                if (pawn.abilities.GetAbility(abilityDef) != null)
+                    return true;
+
+        if (ModsConfig.BiotechActive && !def.satisfiedGenesAny.NullOrEmpty() && pawn.genes != null)
+            foreach (var geneDef in def.satisfiedGenesAny)
+                if (pawn.genes.HasActiveGene(geneDef))
+                    return true;
+
+        if (ModsConfig.RoyaltyActive && def.satisfiedRoyalTitle != null)
+        {
+            if (pawn.royalty.HasAnyTitleIn(Faction.OfEmpire) && (pawn.royalty.HasTitle(def.satisfiedRoyalTitle) ||
+                pawn.royalty.highestTitles[Faction.OfEmpire].seniority > def.satisfiedRoyalTitle.seniority))
+            {
+                return true;
+            }
+        }
+        if (def.satisfiedTrait != null)
+        {
+            if (pawn.story.traits.HasTrait(def.satisfiedTrait))
+            {
+                return true;
+            }
+        }
+
+        if (ModsConfig.RoyaltyActive && def.satisfiedAbilityLevel >0)
+        {
+            List<Ability> abilities = pawn.abilities.abilities.ToList();
+
+            if (abilities.Where(x=> x.def.level>= def.satisfiedAbilityLevel).Count()>0){          
+                return true;
+            }
+        }
 
         if (def.satisfiedThought != null && pawn.needs?.mood?.thoughts != null)
         {

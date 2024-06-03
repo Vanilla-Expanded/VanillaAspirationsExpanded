@@ -7,7 +7,13 @@
     <VAspirE.Implant>implant</VAspirE.Implant>
     <VAspirE.Thought>thought</VAspirE.Thought>
     <VAspirE.Xenotype>xenotype</VAspirE.Xenotype>
+	<VAspirE.AbilityLevel>psycast level</VAspirE.AbilityLevel>
+	<VAspirE.Abilities>abilities</VAspirE.Abilities>
+	<VAspirE.Trait>trait</VAspirE.Trait>
+	<VAspirE.Gene>gene</VAspirE.Gene>
+	<VAspirE.Title>royal title</VAspirE.Title>
     <VAspirE.Becomes>{0} becomes {1} to another.</VAspirE.Becomes>
+	<VAspirE.BecomesList>{0} becomes {1} to one of these: {2}.</VAspirE.BecomesList>
     <VAspirE.Condition>condition</VAspirE.Condition>
     <VAspirE.Prosthetic>prosthetic</VAspirE.Prosthetic>
     <VAspirE.SatisfiedWhen>Satisfied when: </VAspirE.SatisfiedWhen>

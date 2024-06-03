@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_ConsumeOpium</defName>
+		<label>consume opium</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to taste opium.</description>
+		<satisfiedHediff>VFEC_OpiumHigh</satisfiedHediff>
+		  <requiredTraitsAny>
+            <DrugDesire>2</DrugDesire>
+            <DrugDesire>1</DrugDesire>
+        </requiredTraitsAny>
+	</VAspirE.AspirationDef>
+</Defs>

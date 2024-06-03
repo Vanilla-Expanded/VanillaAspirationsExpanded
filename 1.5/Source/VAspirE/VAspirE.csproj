@@ -306,22 +306,22 @@
     <Publicize Include="Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspirationDef.cs" />
-    <Compile Include="AspirationDefOf.cs" />
-    <Compile Include="AspirationsMod.cs" />
-    <Compile Include="AspirationsUtility.cs" />
-    <Compile Include="AspirationWorkers.cs" />
-    <Compile Include="ChoiceLetter_AspirationsFulfilled.cs" />
-    <Compile Include="ChoiceLetter_GrowthMoment_Aspirations.cs" />
-    <Compile Include="DebugActionsAspirations.cs" />
+    <Compile Include="Defs\AspirationDef.cs" />
+    <Compile Include="DefOfs\AspirationDefOf.cs" />
+    <Compile Include="Mod\AspirationsMod.cs" />
+    <Compile Include="Utility\AspirationsUtility.cs" />
+    <Compile Include="AspirationWorkers\AspirationWorkers.cs" />
+    <Compile Include="ChoiceLetters\ChoiceLetter_AspirationsFulfilled.cs" />
+    <Compile Include="ChoiceLetters\ChoiceLetter_GrowthMoment_Aspirations.cs" />
+    <Compile Include="Dev Mode\DebugActionsAspirations.cs" />
     <Compile Include="DefOfs\InternalDefOf.cs" />
-    <Compile Include="Dialog_AspirationsFulfilled.cs" />
-    <Compile Include="Dialog_GrowthMomentChoices_Aspirations.cs" />
-    <Compile Include="GrowthMomentPatches.cs" />
-    <Compile Include="Need_Fulfillment.cs" />
+    <Compile Include="Dialogs\Dialog_AspirationsFulfilled.cs" />
+    <Compile Include="Dialogs\Dialog_GrowthMomentChoices_Aspirations.cs" />
+    <Compile Include="Harmony\GrowthMomentPatches.cs" />
+    <Compile Include="Needs\Need_Fulfillment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SatisfactionPatches.cs" />
-    <Compile Include="StatPart_Aspirations.cs" />
+    <Compile Include="Harmony\SatisfactionPatches.cs" />
+    <Compile Include="StatParts\StatPart_Aspirations.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

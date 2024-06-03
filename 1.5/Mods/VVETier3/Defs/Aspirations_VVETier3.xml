@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_RideInAClassicCar</defName>
+		<label>ride in a classic car</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} would love to feel classy and ride in the classic car.</description>
+		<satisfiedThoughtsAny>
+            <li>VVE_FeelingClassy</li>
+            <li>VVE_FeelingClassyInCar</li>
+          
+        </satisfiedThoughtsAny>
+	</VAspirE.AspirationDef>
+</Defs>

@@ -1,6 +1,8 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using Verse;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace VAspirE;
 
@@ -41,6 +43,13 @@ public static class SatisfactionPatches
             postfix: new(typeof(SatisfactionPatches), nameof(OnPawnKilled)));
         harm.Patch(AccessTools.Method(typeof(SituationalThoughtHandler), nameof(SituationalThoughtHandler.UpdateAllMoodThoughts)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+        harm.Patch(AccessTools.Method(typeof(Pawn_AbilityTracker), nameof(Pawn_AbilityTracker.GainAbility)),
+           postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+        harm.Patch(AccessTools.Method(typeof(TraitSet), nameof(TraitSet.GainTrait)),
+           postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+
+
+
     }
 
     public static void CheckGeneral(Pawn ___pawn)
@@ -82,4 +91,6 @@ public static class SatisfactionPatches
     {
         if (killed.RaceProps.Humanlike) killer.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_KillSomeone);
     }
+
+    
 }

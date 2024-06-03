@@ -1,0 +1,19 @@
+<loadFolders>
+	
+	<v1.5>
+		<li>/</li>
+		<li>1.5</li>
+		<li IfModActive="vanillaracesexpanded.archon">1.5/Mods/VREArchon</li>
+		<li IfModActive="OskarPotocki.VanillaVehiclesExpandedTier3">1.5/Mods/VVETier3</li>
+		<li IfModActive="vanillaracesexpanded.fungoid">1.5/Mods/VREFungoid</li>
+		<li IfModActive="vanillaracesexpanded.android">1.5/Mods/VREAndroid</li>
+		<li IfModActive="OskarPotocki.VFE.Empire">1.5/Mods/VFEEmpire</li>
+		<li IfModActive="VanillaExpanded.VAERoy">1.5/Mods/VAERoyal</li>
+		<li IfModActive="OskarPotocki.VFE.Classical">1.5/Mods/VFEClassical</li>
+		<li IfModActive="OskarPotocki.VFE.Pirates">1.5/Mods/VFEPirates</li>
+
+		
+	</v1.5>
+</loadFolders>
+
+

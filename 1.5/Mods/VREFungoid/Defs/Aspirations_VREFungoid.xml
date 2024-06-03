@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_BecomeFungoid</defName>
+		<label>become a fungoid</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to become a fungoid.</description>
+		<invalidXenotypes>
+			<li MayRequire="vanillaracesexpanded.android">VREA_AndroidBasic</li>
+			<li MayRequire="vanillaracesexpanded.android">VREA_AndroidAwakened</li>
+			<li>VRE_Fungoid</li>
+			<li MayRequire="sarg.alphagenes">AG_Mycormorph</li>
+		</invalidXenotypes>
+		<satisfiedXenotypesAny>
+			<li>VRE_Fungoid</li>
+			<li MayRequire="sarg.alphagenes">AG_Mycormorph</li>
+		</satisfiedXenotypesAny>
+	</VAspirE.AspirationDef>
+</Defs>

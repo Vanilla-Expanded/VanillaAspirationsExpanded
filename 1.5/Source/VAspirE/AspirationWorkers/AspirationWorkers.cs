@@ -111,3 +111,12 @@ public class AspirationWorker_BecomeDisliked : AspirationWorker
         return count >= 10;
     }
 }
+
+
+public class AspirationWorker_GetAndroidLover : AspirationWorker
+{
+    public AspirationWorker_GetAndroidLover(AspirationDef def) : base(def) { }
+
+    public override bool IsCompleted(Pawn pawn) => pawn.GetLoveCluster().Any(p => p.genes.HasActiveGene(DefDatabase<GeneDef>.GetNamed("VREA_Power")));
+    
+}

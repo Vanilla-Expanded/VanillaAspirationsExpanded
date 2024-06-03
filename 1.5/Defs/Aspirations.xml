@@ -52,12 +52,14 @@
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Bruxa</li>
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Ekkimian</li>
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Strigoi</li>
+			 <li MayRequire="sarg.alphagenes,vanillaracesexpanded.sanguophage">AG_Malachai</li>
         </invalidXenotypes>
         <satisfiedXenotypesAny>
             <li>Sanguophage</li>
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Bruxa</li>
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Ekkimian</li>
             <li MayRequire="vanillaracesexpanded.sanguophage">VRE_Strigoi</li>
+			<li MayRequire="sarg.alphagenes,vanillaracesexpanded.sanguophage">AG_Malachai</li>
         </satisfiedXenotypesAny>
     </VAspirE.AspirationDef>
 
@@ -419,4 +421,13 @@
         <description>{0} would like to have a rival, and for them to die.</description>
         <satisfiedThought>PawnWithBadOpinionDied</satisfiedThought>
     </VAspirE.AspirationDef>
+	
+		<VAspirE.AspirationDef>
+		<defName>VAspirE_GainALevel5Psycast</defName>
+		<label>gain a level five psycast</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} would like to gain access to a psycast of the fifth level.</description>
+		
+		<satisfiedAbilityLevel>5</satisfiedAbilityLevel>
+	</VAspirE.AspirationDef>
 </Defs>
