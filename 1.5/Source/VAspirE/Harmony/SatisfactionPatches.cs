@@ -51,8 +51,10 @@ public static class SatisfactionPatches
            postfix: new(typeof(SatisfactionPatches), nameof(CheckRituals)));
         harm.Patch(AccessTools.Method(typeof(JobDriver_Nuzzle), nameof(JobDriver_Nuzzle.MakeNewToils)),
            postfix: new(typeof(SatisfactionPatches), nameof(CheckNuzzlers)));
-
-
+        harm.Patch(AccessTools.Method(typeof(RecipeWorker), nameof(RecipeWorker.Notify_IterationCompleted)),
+           postfix: new(typeof(SatisfactionPatches), nameof(CheckRecipes)));
+        harm.Patch(AccessTools.Method(typeof(Pawn_HealthTracker), nameof(Pawn_HealthTracker.RemoveHediff)),
+           postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
     }
 
     public static void CheckGeneral(Pawn ___pawn)
@@ -110,6 +112,13 @@ public static class SatisfactionPatches
         StaticCollectionsClass.pawns_nuzzled.Add(__instance.TargetA.Pawn,__instance.pawn);
         __instance.TargetA.Pawn?.needs?.Fulfillment()?.CheckCompletion();
         StaticCollectionsClass.pawns_nuzzled.Clear();
+    }
+
+    public static void CheckRecipes(RecipeWorker __instance, Pawn billDoer, List<Thing> ingredients)
+    {
+        StaticCollectionsClass.pawns_and_completed_recipes.Add(billDoer, (__instance.recipe,ingredients));
+        billDoer?.needs?.Fulfillment()?.CheckCompletion();
+        StaticCollectionsClass.pawns_and_completed_recipes.Clear();
     }
 
 }

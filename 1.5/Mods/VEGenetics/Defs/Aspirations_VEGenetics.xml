@@ -7,5 +7,6 @@
 		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
 		<description>{0} would like to nuzzle with the fleshling monstrosity.</description>
 		<satisfiedNuzzledByAny><li>GR_Fleshling</li></satisfiedNuzzledByAny>
+		<workerClass>VAspirE.AspirationWorker_Nuzzled</workerClass>
 	</VAspirE.AspirationDef>
 </Defs>

@@ -13,5 +13,6 @@
 			<li>VFET_AdvanceToUltra_Behaviour</li>
 		</satisfiedRitualOutcomesAny>
 		<satisfiedWhenText>{0} participates in any of the tech advancement rituals.</satisfiedWhenText>
+		<workerClass>VAspirE.AspirationWorker_RitualParticipation</workerClass>
 	</VAspirE.AspirationDef>
 </Defs>

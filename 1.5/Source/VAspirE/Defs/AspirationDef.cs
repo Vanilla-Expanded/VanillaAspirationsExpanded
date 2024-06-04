@@ -12,33 +12,61 @@ namespace VAspirE;
 public class AspirationDef : Def
 {
     public string iconPath;
+
+    //Invalidations
+
     public List<GeneDef> invalidGenes;
     public List<TraitRequirement> invalidTraits;
     public List<XenotypeDef> invalidXenotypes;
     public int minimumAge = -1;
+
+    //Requirements
+
     public List<SkillDef> requiredSkills;
+    public List<HediffDef> requiredHediffs;
     public TraitDef requiredTrait;
     public List<TraitRequirement> requiredTraitsAny;
-    public TraitDef satisfiedTrait;
     public WorkTags requiredWorkTags = WorkTags.None;
-    public bool reverseRelationCheck;
+
+    //Satisfied by
+
+    public string satisfiedWhenText;
+
     public HediffDef satisfiedHediff;
+    public bool hediffPermanent;
+    public int numberOfHediffs = 1;
+    public HediffDef satisfiedHediffRemoval;
     public FloatRange satisfiedHediffSeverityRange = new(float.MinValue, float.MaxValue);
+
     public PawnRelationDef satisfiedRelation;
+    public bool reverseRelationCheck;
     public List<ThingDef> thingDefsForRelation;
+
     public ThoughtDef satisfiedThought;
     public IntRange satisfiedThoughtDegreeRange = new(int.MinValue, int.MaxValue);
     public List<ThoughtDef> satisfiedThoughtsAny;
-    public string satisfiedWhenText;
+    
     public List<XenotypeDef> satisfiedXenotypesAny;
+
     public List<GeneDef> satisfiedGenesAny;
+
     public RoyalTitleDef satisfiedRoyalTitle;
+
     public List<AbilityDef> satisfiedAbilitiesAny;
+    public int satisfiedAbilityLevel;
+
     public List<RitualBehaviorDef> satisfiedRitualOutcomesAny;
+
     public List<ThingDef> satisfiedNuzzledByAny;
+
     public int satisfiedColonyWealth;
 
-    public int satisfiedAbilityLevel;
+    public RecipeDef satisfiedByRecipe;
+    public ThingDef satisfiedByIngredientInRecipe;
+
+    public TraitDef satisfiedTrait;
+
+
     public Type workerClass = typeof(AspirationWorker);
     private Texture2D icon;
     private AspirationWorker worker;
@@ -72,6 +100,18 @@ public class AspirationDef : Def
                         else if (stage.label != null) satisfiedLabel += " (" + stage.label + ")";
                     }
                 }
+                if (numberOfHediffs>1)
+                {
+                    satisfiedLabel = numberOfHediffs+ " "+satisfiedHediff.LabelCap;
+                }
+                if (hediffPermanent)
+                {
+                    satisfiedLabel += "VAspirE.Scar".Translate();
+                }
+            }
+            else if (satisfiedHediffRemoval !=null)
+            {
+                return "VAspirE.HediffRemoval".Translate(pawn.NameShortColored, satisfiedHediffRemoval.LabelCap);
             }
             else if (satisfiedThought != null)
             {
@@ -98,9 +138,9 @@ public class AspirationDef : Def
                 List<string> names = satisfiedNuzzledByAny.Select(x => x.LabelCap.Resolve()).ToList();
                 return "VAspirE.NuzzledBy".Translate(pawn.NameShortColored, names.ToCommaListOr());
             }
-            else if (satisfiedColonyWealth >0)
+            else if (satisfiedColonyWealth > 0)
             {
-               
+
                 return "VAspirE.Wealth".Translate(pawn.NameShortColored, satisfiedColonyWealth);
             }
 
@@ -110,22 +150,36 @@ public class AspirationDef : Def
                 {
                     return "VAspirE.Becomes".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn));
                 }
-                else { 
+                else
+                {
                     List<string> names = thingDefsForRelation.Select(x => x.LabelCap.Resolve()).ToList();
-                    return "VAspirE.BecomesList".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn), names.ToCommaListOr()); 
-                
+                    return "VAspirE.BecomesList".Translate(pawn.NameShortColored, satisfiedRelation.GetGenderSpecificLabelCap(pawn), names.ToCommaListOr());
+
                 }
             }
-            else if (satisfiedAbilityLevel !=0)
+            else if (satisfiedAbilityLevel != 0)
             {
                 type = "VAspirE.AbilityLevel".Translate();
                 satisfiedLabel = satisfiedAbilityLevel.ToString();
+            }
+            else if (satisfiedByRecipe != null)
+            {
+                if (satisfiedByIngredientInRecipe != null)
+                {
+                    return "VAspirE.RecipeProduct".Translate(pawn.NameShortColored, satisfiedByRecipe.LabelCap, satisfiedByIngredientInRecipe.LabelCap);
+                }
+                else
+                {
+                    return "VAspirE.Recipe".Translate(pawn.NameShortColored, satisfiedByRecipe.LabelCap);
+
+                }
             }
             else if (satisfiedTrait != null)
             {
                 type = "VAspirE.Trait".Translate();
                 satisfiedLabel = satisfiedTrait.degreeDatas.First().LabelCap;
             }
+           
 
             else if (satisfiedXenotypesAny is { Count: >= 1 })
             {
@@ -187,28 +241,33 @@ public class AspirationWorker
 
     public virtual bool ValidOn(Pawn pawn)
     {
-        if (ModsConfig.BiotechActive && !def.invalidXenotypes.NullOrEmpty() && def.invalidXenotypes.Contains(pawn.genes.Xenotype)) return false;
+        if(pawn is null) return false;
 
-        if (def.requiredTrait != null && !pawn.story.traits.HasTrait(def.requiredTrait)) return false;
+        if (ModsConfig.BiotechActive && !def.invalidXenotypes.NullOrEmpty() && def.invalidXenotypes.Contains(pawn.genes?.Xenotype)) return false;
+
+        if (def.requiredTrait != null && pawn.story?.traits?.HasTrait(def.requiredTrait)==false) return false;
 
         if (!def.requiredTraitsAny.NullOrEmpty() && def.requiredTraitsAny.TrueForAll(trait => !trait.HasTrait(pawn))) return false;
 
-        if (!def.requiredSkills.NullOrEmpty() && def.requiredSkills.Any(skill => pawn.skills.GetSkill(skill).TotallyDisabled)) return false;
+        if (!def.requiredSkills.NullOrEmpty() && def.requiredSkills.Any(skill => pawn.skills?.GetSkill(skill)?.TotallyDisabled==true)) return false;
 
-        if (def.minimumAge > 0 && pawn.ageTracker.AgeBiologicalYears < def.minimumAge) return false;
+        if (!def.requiredHediffs.NullOrEmpty() && def.requiredHediffs.TrueForAll(hediff => pawn.health?.hediffSet?.HasHediff(hediff)==false)) return false;
+
+        if (def.minimumAge > 0 && pawn.ageTracker?.AgeBiologicalYears < def.minimumAge) return false;
 
         if (!def.invalidTraits.NullOrEmpty() && def.invalidTraits.Any(trait => trait.HasTrait(pawn))) return false;
 
-        if (!def.invalidGenes.NullOrEmpty() && def.invalidGenes.Any(gene => pawn.genes.HasActiveGene(gene))) return false;
+        if (!def.invalidGenes.NullOrEmpty() && def.invalidGenes.Any(gene => pawn.genes?.HasActiveGene(gene)==true)) return false;
 
-        if (def.requiredWorkTags != WorkTags.None && pawn.WorkTagIsDisabled(def.requiredWorkTags)) return false;
+        if (Current.ProgramState != ProgramState.MapInitializing&&def.requiredWorkTags != WorkTags.None && pawn.WorkTagIsDisabled(def.requiredWorkTags)) return false;
 
         return true;
     }
 
     public virtual bool IsCompleted(Pawn pawn)
     {
-        if (def.satisfiedRelation != null && pawn.relations != null) {
+        if (def.satisfiedRelation != null && pawn.relations != null)
+        {
 
             List<Pawn> listToCheck = new List<Pawn>();
             if (def.thingDefsForRelation.NullOrEmpty())
@@ -219,7 +278,7 @@ public class AspirationWorker
             {
                 listToCheck = pawn.relations.PotentiallyRelatedPawns.Where(x => def.thingDefsForRelation.Contains(x.def)).ToList();
             }
-            if(!listToCheck.NullOrEmpty())
+            if (!listToCheck.NullOrEmpty())
             {
                 foreach (var otherPawn in listToCheck)
                     if (def.reverseRelationCheck)
@@ -233,15 +292,34 @@ public class AspirationWorker
                             return true;
                     }
             }
-           
+
         }
         if (def.satisfiedHediff != null && pawn.health?.hediffSet != null)
         {
-            var hediffs = new List<Hediff>();
-            pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => hediff.def == def.satisfiedHediff);
-            foreach (var hediff in hediffs)
-                if (def.satisfiedHediffSeverityRange.Includes(hediff.Severity))
+            if (def.hediffPermanent)
+            {
+                var hediffs = new List<Hediff>();
+                pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => hediff.def == def.satisfiedHediff&&hediff.TryGetComp<HediffComp_GetsPermanent>()?.IsPermanent == true);
+                if(hediffs.Count >= def.numberOfHediffs) {
                     return true;
+                }
+            }
+            else
+            {
+                var hediffs = new List<Hediff>();
+                pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => hediff.def == def.satisfiedHediff);
+                foreach (var hediff in hediffs)
+                    if (def.satisfiedHediffSeverityRange.Includes(hediff.Severity))
+                        return true;
+            }
+           
+        }
+        if (def.satisfiedHediffRemoval != null && pawn.health?.hediffSet != null)
+        {
+            if (pawn.health.hediffSet.GetFirstHediffOfDef(def.satisfiedHediffRemoval) == null)
+            {
+                return true;
+            }
         }
 
         if (ModsConfig.BiotechActive && !def.satisfiedXenotypesAny.NullOrEmpty() && pawn.genes != null)
@@ -259,31 +337,30 @@ public class AspirationWorker
                 if (pawn.genes.HasActiveGene(geneDef))
                     return true;
 
-        if (!def.satisfiedRitualOutcomesAny.NullOrEmpty())
+
+        if (def.satisfiedByRecipe != null)
         {
-            foreach (var ritualOutcome in def.satisfiedRitualOutcomesAny)
+            if (StaticCollectionsClass.pawns_and_completed_recipes.ContainsKey(pawn))
             {
-                if (StaticCollectionsClass.rituals_and_pawns.ContainsKey(ritualOutcome))
+                if (def.satisfiedByIngredientInRecipe != null)
                 {
-                    if (StaticCollectionsClass.rituals_and_pawns[ritualOutcome].Contains(pawn))
+                    if (StaticCollectionsClass.pawns_and_completed_recipes[pawn].Item1 == def.satisfiedByRecipe
+                        && StaticCollectionsClass.pawns_and_completed_recipes[pawn].Item2?.Where(x => x.def == def.satisfiedByIngredientInRecipe).Count()>0
+
+                        )
                     {
                         return true;
                     }
-                }                   
-            }               
-        }
-        if (!def.satisfiedNuzzledByAny.NullOrEmpty())
-        {
-            foreach (var thingDef in def.satisfiedNuzzledByAny)
-            {
-                if (StaticCollectionsClass.pawns_nuzzled.ContainsKey(pawn))
+                }
+                else
                 {
-                    if (StaticCollectionsClass.pawns_nuzzled[pawn].def == thingDef)
+                    if (StaticCollectionsClass.pawns_and_completed_recipes[pawn].Item1 == def.satisfiedByRecipe)
                     {
                         return true;
                     }
                 }
             }
+
         }
 
         if (ModsConfig.RoyaltyActive && def.satisfiedRoyalTitle != null)
@@ -303,33 +380,34 @@ public class AspirationWorker
         }
         if (def.satisfiedColonyWealth > 0)
         {
-            if (WealthUtility.PlayerWealth>= def.satisfiedColonyWealth)
+            if (WealthUtility.PlayerWealth >= def.satisfiedColonyWealth)
             {
                 return true;
             }
         }
 
-        if (ModsConfig.RoyaltyActive && def.satisfiedAbilityLevel >0)
+        if (ModsConfig.RoyaltyActive && def.satisfiedAbilityLevel > 0)
         {
-            List<Ability> abilities = pawn.abilities.abilities.ToList();
+            List<Ability> abilities = pawn?.abilities?.abilities?.ToList();
 
-            if (abilities.Where(x=> x.def.level>= def.satisfiedAbilityLevel).Count()>0){          
+            if (!abilities.NullOrEmpty() && abilities.Where(x => x.def.level >= def.satisfiedAbilityLevel).Count() > 0)
+            {
                 return true;
             }
 
             HediffDef hediffDef = DefDatabase<HediffDef>.GetNamedSilentFail("VPE_PsycastAbilityImplant");
-            if (hediffDef!=null)
+            if (hediffDef != null)
             {
-                Hediff_Level hediff = (Hediff_Level)pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
-                if(hediff != null)
+                Hediff_Level hediff = (Hediff_Level)pawn?.health?.hediffSet?.GetFirstHediffOfDef(hediffDef);
+                if (hediff != null)
                 {
-                    if(hediff.level>= def.satisfiedAbilityLevel)
+                    if (hediff.level >= def.satisfiedAbilityLevel)
                     {
                         return true;
                     }
                 }
             }
-            
+
         }
 
         if (def.satisfiedThought != null && pawn.needs?.mood?.thoughts != null)

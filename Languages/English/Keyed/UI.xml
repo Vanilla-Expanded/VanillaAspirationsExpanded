@@ -11,6 +11,9 @@
 	<VAspirE.Abilities>abilities</VAspirE.Abilities>
 	<VAspirE.Trait>trait</VAspirE.Trait>
 	<VAspirE.Gene>gene</VAspirE.Gene>
+	<VAspirE.Recipe>{0} completes the recipe {1}</VAspirE.Recipe>
+	<VAspirE.HediffRemoval>{0} gets rid of the health condition {1}</VAspirE.HediffRemoval>
+	<VAspirE.RecipeProduct>{0} completes the recipe {1}, using at least 1 {2}</VAspirE.RecipeProduct>
 	<VAspirE.NuzzledBy>{0} nuzzled by: {1}</VAspirE.NuzzledBy>
 	<VAspirE.Wealth>{0} is in a colony with greater than {1} wealth</VAspirE.Wealth>
 	<VAspirE.Title>royal title</VAspirE.Title>
@@ -29,4 +32,5 @@
     <VAspirE.AspirationSelectionArchivePlural>Aspirations were gained: {0}.</VAspirE.AspirationSelectionArchivePlural>
     <VAspirE.FullfilledGrowthMoment>{0} has achieved fulfillment from their aspirations and has experienced a growth moment.</VAspirE.FullfilledGrowthMoment>
     <VAspirE.FullfilledGrowthMoment.Desc>{0_nameDef} has demonstrated excellent determination in meeting their lifelong goals and is incredibly content with what they have achieved in their life. {0_nameDef} hopes that they have made a difference in the world.</VAspirE.FullfilledGrowthMoment.Desc>
+	<VAspirE.Scar> scar (permanent)</VAspirE.Scar>
 </LanguageData>

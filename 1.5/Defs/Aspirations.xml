@@ -160,7 +160,7 @@
 		<description>{0} would like to get some lovin’.</description>
 		<minimumAge>16</minimumAge>
 		<satisfiedThoughtsAny>
-			<li>GotSomeLovin</li>		
+			<li>GotSomeLovin</li>
 		</satisfiedThoughtsAny>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
@@ -393,7 +393,169 @@
 		<description>{0} would like to gain access to a psycast of the fifth level.</description>
 		<satisfiedAbilityLevel>5</satisfiedAbilityLevel>
 	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_BurnSomeLuciferium</defName>
+		<label>burn some luciferium</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get rid of some disgusting luciferium in a crematorium or fireplace.</description>
+		<requiredTraitsAny>
+			<DrugDesire>-1</DrugDesire>
+			
+		</requiredTraitsAny>
+		<satisfiedByRecipe>BurnDrugs</satisfiedByRecipe>
+		<satisfiedByIngredientInRecipe>Luciferium</satisfiedByIngredientInRecipe>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_ExperienceResurrection</defName>
+		<label>experience resurrection</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to experience true death and be resurrected.</description>
+		<satisfiedHediff>ResurrectionSickness</satisfiedHediff>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_GetRidOfAsthma</defName>
+		<label>get rid of asthma</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get rid of asthma.</description>
+		<requiredHediffs><li>Asthma</li></requiredHediffs>
+		<satisfiedHediffRemoval>Asthma</satisfiedHediffRemoval>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_GetRidOfCataracts</defName>
+		<label>get rid of cataracts</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get rid of cataracts.</description>
+		<requiredHediffs><li>Cataract</li></requiredHediffs>
+		<satisfiedHediffRemoval>Cataract</satisfiedHediffRemoval>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_GetRidOfHearingLoss</defName>
+		<label>get rid of hearing loss</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get rid of hearing loss.</description>
+		<requiredHediffs><li>HearingLoss</li></requiredHediffs>
+		<satisfiedHediffRemoval>HearingLoss</satisfiedHediffRemoval>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_GetFiveBurnScars</defName>
+		<label>get five burn scars</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get five burn scars.</description>
+		<requiredTrait>Pyromaniac</requiredTrait>
+		<satisfiedHediff>Burn</satisfiedHediff>
+		<hediffPermanent>true</hediffPermanent>
+		<numberOfHediffs>5</numberOfHediffs>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_AchieveExcruciatingPain</defName>
+		<label>achieve excruciating pain</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to achieve an exquisite, excruciating pain.</description>
+		<requiredTrait>Masochist</requiredTrait>
+		<workerClass>VAspirE.AspirationWorker_MaxPain</workerClass>
+		<satisfiedWhenText>{0} reaches a pain level of 100% (Extreme).</satisfiedWhenText>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_GetUltimateRevengeOnCentipede</defName>
+		<label>get ultimate revenge on a Centipede</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to shred a Centipede blaster to show him who's boss now.</description>
+		<satisfiedByRecipe>ButcherCorpseMechanoid</satisfiedByRecipe>
+		<satisfiedByIngredientInRecipe>Corpse_Mech_CentipedeBlaster</satisfiedByIngredientInRecipe>
+	</VAspirE.AspirationDef>
 	
-
+	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VAspirE_LearnToShapeFlesh</defName>
+		<label>learn to shape flesh</label>
+		<requiredTrait>Bloodlust</requiredTrait>
+		<invalidTraits>
+			<li>BodyPurist</li>
+		</invalidTraits>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to learn the occult ability to shape flesh.</description>
+		<satisfiedAbilitiesAny><li>ShapeFlesh</li></satisfiedAbilitiesAny>
 	
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VAspirE_BecomeInhuman</defName>
+		<label>become inhuman</label>
+		
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to be dominated by the psychic patterns of the void and become inhuman.</description>
+		<satisfiedHediff>Inhumanized</satisfiedHediff>
+	
+	</VAspirE.AspirationDef>
+	
+	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VAspirE_BecomeAHentaiCharacter</defName>
+		<label>get a tentacle</label>
+		<invalidTraits>
+			<li>BodyPurist</li>
+		</invalidTraits>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get a warped body.</description>
+		<satisfiedHediff>Tentacle</satisfiedHediff>
+	
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VAspirE_GetDigested</defName>
+		<label>get digested</label>
+		<requiredTrait>Masochist</requiredTrait>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to get digested whole. {0} swears this is not a kink thing.</description>
+		<satisfiedHediff>Digested</satisfiedHediff>
+	
+	</VAspirE.AspirationDef>
+		<VAspirE.AspirationDef  MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VAspirE_PlayWithCube</defName>
+		<label>play with a golden cube</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to play with a golden cube.</description>
+		<satisfiedThought>PlayedWithCube</satisfiedThought>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef  MayRequire="Ludeon.RimWorld.Anomaly">
+		<defName>VAspirE_ReadAFascinatingTome</defName>
+		<label>read a fascinating tome</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to read a fascinating eldritch tome.</description>
+		<satisfiedThought>ReadingTome</satisfiedThought>
+	</VAspirE.AspirationDef>
+<VAspirE.AspirationDef  MayRequire="Ludeon.RimWorld.Royalty">
+		<defName>VAspirE_HeldConcert</defName>
+		<label>held a concert</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} would like to hold a concert for other colonists.</description>
+		<satisfiedThought>HeldConcert</satisfiedThought>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef  MayRequire="Ludeon.RimWorld.Royalty">
+		<defName>VAspirE_DestroyCluster</defName>
+		<label>destroy a mech cluster</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to completely destroy a mech cluster.</description>
+		<satisfiedThought>DefeatedMechCluster</satisfiedThought>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_DestroyInsectHive</defName>
+		<label>destroy an insect hive</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to completely destroy an insect hive.</description>
+		<satisfiedThought>DefeatedInsectHive</satisfiedThought>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_UseFireWeapon</defName>
+		<label>use a flame weapon</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<requiredTrait>Pyromaniac</requiredTrait>
+		<description>{0} wants to use a flame weapon in combat.</description>
+		<satisfiedThought>PyroUsed</satisfiedThought>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_ReadAmazingBook</defName>
+		<label>read an amazing book</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		
+		<description>{0} wants to read a book detailing a skill on which they are passionate about.</description>
+		<satisfiedThought>SkillBookPassion</satisfiedThought>
+		<satisfiedThoughtDegreeRange>1~1</satisfiedThoughtDegreeRange>
+	</VAspirE.AspirationDef>
 </Defs>
