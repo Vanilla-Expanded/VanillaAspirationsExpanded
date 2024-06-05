@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_MeetAngelicPawn</defName>
+		<label>meet an angelic being</label>
+		<iconPath>UI/AspirationIcons/Aspiration_MeetAngelicPawn</iconPath>
+		<description>{0} wants to meet an angelic being that radiates a pristine beauty.</description>
+		<satisfiedThought>AG_Awe</satisfiedThought>
+		<invalidGenes>
+			<li>AG_Beauty_Angelic</li>
+		</invalidGenes>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_RaidABioLab</defName>
+		<label>raid a bio-lab</label>
+		<iconPath>UI/AspirationIcons/Aspiration_RaidBioLab</iconPath>
+		<description>{0} wants to raid a bio-lab.</description>
+		<satisfiedThought>AG_RaidedBioLab</satisfiedThought>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_UseXenotypeInjector</defName>
+		<label>change xenotype</label>
+		<iconPath>UI/AspirationIcons/Aspiration_ChangeXenotype</iconPath>
+		<description>{0} wants to change xenotype by using a xenotype injector.</description>
+		<satisfiedThought>AG_UsedXenotypeInjector</satisfiedThought>
+		<invalidTraits>
+			<li>BodyPurist</li>
+		</invalidTraits>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_ChainsawHands</defName>
+		<label>get a melee gene</label>
+		<iconPath>UI/AspirationIcons/Aspiration_ChainsawHands</iconPath>
+		<description>{0} wants to get a gene that improves innate hand melee attacks.</description>
+		<requiredTraitsAny>
+			<li>Brawler</li>
+		</requiredTraitsAny>
+		<satisfiedGenesAny>
+			<li>AG_ClawedHands</li>
+			<li>AG_ChainsawHands</li>
+			<li>AG_ScytherHands</li>
+			<li>AG_CrabClaw</li>
+		</satisfiedGenesAny>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_Winged</defName>
+		<label>fly</label>
+		<iconPath>UI/AspirationIcons/Aspiration_Winged</iconPath>
+		<description>{0} wants to get a gene that gives wings.</description>
+		<satisfiedAbilitiesAny>
+			<li>AG_WingPoweredJump</li>
+		</satisfiedAbilitiesAny>
+	</VAspirE.AspirationDef>
+</Defs>

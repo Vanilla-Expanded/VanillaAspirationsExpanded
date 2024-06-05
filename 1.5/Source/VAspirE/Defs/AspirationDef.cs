@@ -378,7 +378,7 @@ public class AspirationWorker
                 return true;
             }
         }
-        if (def.satisfiedColonyWealth > 0)
+        if (def.satisfiedColonyWealth > 0 && Current.ProgramState != ProgramState.MapInitializing)
         {
             if (WealthUtility.PlayerWealth >= def.satisfiedColonyWealth)
             {

@@ -13,6 +13,6 @@
 		<label>drink aperitif</label>
 		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
 		<description>{0} would like to taste the luxury that is the aperitif.</description>
-		<satisfiedHediff>VFEE_IngestedAperitif </satisfiedHediff>
+		<satisfiedHediff>VFEE_IngestedAperitif</satisfiedHediff>
 	</VAspirE.AspirationDef>
 </Defs>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_JoinTheDeserters</defName>
+		<label>join the deserters</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to join the deserter cause.</description>
+		<satisfiedThought>VFED_JoinedDeserters</satisfiedThought>
+		
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_UseADeclassifier</defName>
+		<label>use a declassifier</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} wants to see what it’s like to use a deserter declassifier on an enemy noble.</description>
+		<satisfiedThought>VFED_UsedDeclassifier</satisfiedThought>
+		<invalidTraits>
+			<li>Psychopath</li>
+			<li>Bloodlust</li>
+		</invalidTraits>
+	</VAspirE.AspirationDef>
+</Defs>
