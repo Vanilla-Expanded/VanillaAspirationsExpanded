@@ -59,6 +59,8 @@ public static class SatisfactionPatches
 
     public static void CheckGeneral(Pawn ___pawn)
     {
+        
+       
         ___pawn?.needs?.Fulfillment()?.CheckCompletion();
     }
 

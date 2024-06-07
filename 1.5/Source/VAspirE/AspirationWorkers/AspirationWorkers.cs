@@ -153,8 +153,11 @@ public class AspirationWorker_MaxPain : AspirationWorker
 {
     public AspirationWorker_MaxPain(AspirationDef def) : base(def) { }
 
-    public override bool IsCompleted(Pawn pawn) => pawn?.health?.hediffSet?.PainTotal>=1;
-
+    public override bool IsCompleted(Pawn pawn)
+    {
+        if (Current.ProgramState == ProgramState.MapInitializing) return false;
+        return pawn?.health?.hediffSet?.PainTotal >= 1;
+    }
 }
 
 public class AspirationWorker_Nuzzled : AspirationWorker
