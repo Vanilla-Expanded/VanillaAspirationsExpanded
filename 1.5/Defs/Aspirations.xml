@@ -79,6 +79,8 @@
 		<iconPath>UI/AspirationIcons/Aspiration_LinkWithAnimaTree</iconPath>
 		<description>{0} wants to undergo an anima tree linking ritual with them as the main recipient of the boons.</description>
 		<workerClass>VAspirE.AspirationWorker_AnimaTreeLink</workerClass>
+				<satisfiedWhenText>{0} links with the anima tree.</satisfiedWhenText>
+
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
 		<defName>VAspirE_HearAnimaScream</defName>
