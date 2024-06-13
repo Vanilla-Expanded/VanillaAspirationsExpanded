@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_AcquireSuperpower</defName>
+		<label>gain a superpower</label>
+		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<description>{0} desires to obtain a superpower.</description>
+		<satisfiedThought>VFEA_AcquiredSuperpower</satisfiedThought>
+	</VAspirE.AspirationDef>
+</Defs>

@@ -15,6 +15,7 @@
 		<li IfModActive="VanillaExpanded.VGeneticsE">1.5/Mods/VEGenetics</li>
 		<li IfModActive="OskarPotocki.VFE.Deserters">1.5/Mods/VFEDeserters</li>
 		<li IfModActive="sarg.alphagenes">1.5/Mods/AlphaGenes</li>
+		<li IfModActive="VanillaExpanded.VFEA">1.5/Mods/VFEAncients</li>
 	</v1.5>
 </loadFolders>
 
