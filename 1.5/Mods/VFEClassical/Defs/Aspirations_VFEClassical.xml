@@ -3,7 +3,7 @@
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_ConsumeOpium</defName>
 		<label>consume opium</label>
-		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<iconPath>UI/AspirationIcons/Aspiration_ConsumeOpium</iconPath>
 		<description>{0} wants to taste opium.</description>
 		<satisfiedHediff>VFEC_OpiumHigh</satisfiedHediff>
 		  <requiredTraitsAny>

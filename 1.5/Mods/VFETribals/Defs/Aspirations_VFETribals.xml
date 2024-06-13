@@ -3,7 +3,7 @@
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_EarnACornerstone</defName>
 		<label>earn a cornerstone</label>
-		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<iconPath>UI/AspirationIcons/Aspiration_EarnCornerstone</iconPath>
 		<description>{0} desires to witness the technological advancement of their faction, the achievement of the cornerstone.</description>
 		<satisfiedRitualOutcomesAny>
 			<li>VFET_AdvanceToNeolithic_Behaviour</li>

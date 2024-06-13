@@ -3,7 +3,7 @@
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_BecomeFungoid</defName>
 		<label>become a fungoid</label>
-		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<iconPath>UI/AspirationIcons/Aspiration_BecomeFungoid</iconPath>
 		<description>{0} wants to become a fungoid.</description>
 		<invalidXenotypes>
 			<li MayRequire="vanillaracesexpanded.android">VREA_AndroidBasic</li>

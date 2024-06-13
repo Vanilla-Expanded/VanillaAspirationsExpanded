@@ -3,7 +3,7 @@
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_BecomeAnAndroidLover</defName>
 		<label>become an android lover</label>
-		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<iconPath>UI/AspirationIcons/Aspiration_BecomeAndroidLover</iconPath>
 		<description>{0} wants to fall in love with an android.</description>
 		
 		<invalidTraits>

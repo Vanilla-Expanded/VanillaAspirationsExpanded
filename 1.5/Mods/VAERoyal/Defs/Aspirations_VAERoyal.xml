@@ -3,7 +3,7 @@
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_BeBondedToARoyalAnimal</defName>
 		<label>be bonded to a royal animal</label>
-		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<iconPath>UI/AspirationIcons/Aspiration_BeBondedToRoyalAnimal</iconPath>
 		<description>{0} would like to bond with one of the royal animals.</description>
 		<satisfiedWhenText>{0} bonds with either of: Crane, Orangutan, Peacock, Pheasant, Quail, Royal Tiger, Swan, Angora rabbit, Megachicken.</satisfiedWhenText>
 		<satisfiedRelation>Bond</satisfiedRelation>

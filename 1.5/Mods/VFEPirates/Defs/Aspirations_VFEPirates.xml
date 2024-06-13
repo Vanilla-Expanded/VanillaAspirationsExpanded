@@ -3,7 +3,7 @@
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_GetEntombed</defName>
 		<label>get entombed</label>
-		<iconPath>UI/AspirationIcons/VCEF_AlphaFish_a</iconPath>
+		<iconPath>UI/AspirationIcons/Aspiration_GetEntombed</iconPath>
 		<description>{0} wants to be entombed in a warcasket.</description>
 		
 		<satisfiedTrait>VFEP_WarcasketTrait</satisfiedTrait>
