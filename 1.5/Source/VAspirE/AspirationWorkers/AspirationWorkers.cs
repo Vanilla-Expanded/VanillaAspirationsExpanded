@@ -66,7 +66,7 @@ public class AspirationWorker_GetBeautifulLover : AspirationWorker
         if (pawn != null)
         {
             List<Pawn> loveCluster = pawn.GetLoveRelationsInternal().Select(x => x.otherPawn).ToList();
-            if (loveCluster != null && loveCluster.Any(p => p?.story?.traits?.GetTrait(InternalDefOf.Beauty)?.Degree >= 1))
+            if (loveCluster != null && loveCluster.Any(p => p?.GetStatValue(StatDefOf.PawnBeauty) >= 1))
             {
                 return true;
             }

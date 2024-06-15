@@ -72,6 +72,12 @@
 		<iconPath>UI/AspirationIcons/Aspiration_BecomePsycaster</iconPath>
 		<description>{0} wants to become acquainted with the psychic powers of psycasters.</description>
 		<satisfiedHediff>PsychicAmplifier</satisfiedHediff>
+		<invalidTraits>
+			<PsychicSensitivity>-2</PsychicSensitivity>
+		</invalidTraits>
+		<invalidGenes>
+			<li>PsychicAbility_Deaf</li>
+		</invalidGenes>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
 		<defName>VAspirE_AnimaTreeLink</defName>
@@ -79,7 +85,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_LinkWithAnimaTree</iconPath>
 		<description>{0} wants to undergo an anima tree linking ritual with them as the main recipient of the boons.</description>
 		<workerClass>VAspirE.AspirationWorker_AnimaTreeLink</workerClass>
-				<satisfiedWhenText>{0} links with the anima tree.</satisfiedWhenText>
+		<satisfiedWhenText>{0} links with the anima tree.</satisfiedWhenText>
 
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
@@ -224,7 +230,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_GetBeautifulLover</iconPath>
 		<description>{0} wants to be told that they are punching above their weight, and become lovers with a beautiful person.</description>
 		<workerClass>VAspirE.AspirationWorker_GetBeautifulLover</workerClass>
-		<satisfiedWhenText>{0} becomes lovers with a pawn that is Pretty or Beautiful.</satisfiedWhenText>
+		<satisfiedWhenText>{0} becomes lovers with a pawn with a Beauty stat of 1 or higher.</satisfiedWhenText>
 		<invalidTraits>
 			<Beauty>2</Beauty>
 			<Beauty>1</Beauty>
@@ -394,6 +400,12 @@
 		<iconPath>UI/AspirationIcons/Aspiration_HighestLevelPsycast</iconPath>
 		<description>{0} would like to gain access to a psycast of the fifth level.</description>
 		<satisfiedAbilityLevel>5</satisfiedAbilityLevel>
+		<invalidTraits>
+			<PsychicSensitivity>-2</PsychicSensitivity>
+		</invalidTraits>
+		<invalidGenes>
+			<li>PsychicAbility_Deaf</li>
+		</invalidGenes>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_BurnSomeLuciferium</defName>
