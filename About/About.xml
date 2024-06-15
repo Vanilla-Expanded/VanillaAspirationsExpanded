@@ -5,6 +5,7 @@
 	<supportedVersions>
 		<li>1.5</li>
 	</supportedVersions>
+	<modIconPath IgnoreIfNoMatchingField="True">UI/VELogo</modIconPath>
 	<packageId>VanillaExpanded.VanillaAspirationsExpanded</packageId>
 	<description>Vanilla Aspirations Expanded is another mod in our arsenal that aims to add depth to colonists, with a final aim being enhancing the storytelling and making characters more memorable. In a similar manner to The Sims aspirations, Vanilla Aspirations Expanded adds aspirations to colonists that the player may choose to aim towards.
 
