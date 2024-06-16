@@ -12,7 +12,7 @@ namespace VAspirE
     {
       
 
-        [HarmonyPostfix]
+        [HarmonyPrefix]
         public static void GiveThought(LocalTargetInfo target)
         {
             Corpse corpse;

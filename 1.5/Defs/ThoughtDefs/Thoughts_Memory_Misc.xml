@@ -7,7 +7,7 @@
 	
 	<ThoughtDef>
 		<defName>VAE_WitnessedFleshShaping</defName>
-		<durationDays>0.1</durationDays>
+		<durationDays>0.5</durationDays>
 		
 		<stages>
 			<li>

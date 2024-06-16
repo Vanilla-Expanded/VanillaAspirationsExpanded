@@ -309,6 +309,7 @@
     <Compile Include="Defs\AspirationDef.cs" />
     <Compile Include="DefOfs\AspirationDefOf.cs" />
     <Compile Include="Harmony\CompAbilityEffect_FleshbeastFromCorpse_Apply.cs" />
+    <Compile Include="Harmony\HarmonyInstance.cs" />
     <Compile Include="Mod\AspirationsMod.cs" />
     <Compile Include="StaticCollections\StaticCollectionsClass.cs" />
     <Compile Include="Utility\AspirationsUtility.cs" />
