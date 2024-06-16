@@ -18,6 +18,6 @@ namespace VAspirE
         }
 
         public static TraitDef Beauty;
-      
+        public static ThoughtDef VAE_WitnessedFleshShaping;
     }
 }
