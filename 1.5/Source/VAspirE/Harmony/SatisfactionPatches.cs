@@ -118,9 +118,13 @@ public static class SatisfactionPatches
 
     public static void CheckRecipes(RecipeWorker __instance, Pawn billDoer, List<Thing> ingredients)
     {
-        StaticCollectionsClass.pawns_and_completed_recipes.Add(billDoer, (__instance.recipe,ingredients));
-        billDoer?.needs?.Fulfillment()?.CheckCompletion();
-        StaticCollectionsClass.pawns_and_completed_recipes.Clear();
+        if (__instance.recipe != null)
+        {
+            StaticCollectionsClass.pawns_and_completed_recipes.Add(billDoer, (__instance.recipe, ingredients));
+            billDoer?.needs?.Fulfillment()?.CheckCompletion();
+            StaticCollectionsClass.pawns_and_completed_recipes.Clear();
+        }
+        
     }
 
 }

@@ -423,7 +423,7 @@
 		<defName>VAspirE_ExperienceResurrection</defName>
 		<label>experience resurrection</label>
 		<iconPath>UI/AspirationIcons/Aspiration_ExperienceResurrection</iconPath>
-		<description>{0} wants to experience true death and be resurrected.</description>
+		<description>{0} wants to experience true death and be resurrected using a mech serum.</description>
 		<satisfiedHediff>ResurrectionSickness</satisfiedHediff>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>

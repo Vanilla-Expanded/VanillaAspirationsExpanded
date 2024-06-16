@@ -38,7 +38,7 @@ public class ChoiceLetter_GrowthMoment_Aspirations : ChoiceLetter_GrowthMoment
 
         chosenAspirations = aspirations;
 
-        if (!aspirations.NullOrEmpty()) pawn.needs.Fulfillment().SetAspirations(aspirations);
+        if (!aspirations.NullOrEmpty()) pawn?.needs?.Fulfillment()?.SetAspirations(aspirations);
     }
 
     public override void OpenLetter()
