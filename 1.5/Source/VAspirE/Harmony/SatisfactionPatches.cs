@@ -118,7 +118,7 @@ public static class SatisfactionPatches
 
     public static void CheckRecipes(RecipeWorker __instance, Pawn billDoer, List<Thing> ingredients)
     {
-        if (__instance.recipe != null)
+        if (__instance.recipe != null && billDoer != null)
         {
             StaticCollectionsClass.pawns_and_completed_recipes.Add(billDoer, (__instance.recipe, ingredients));
             billDoer?.needs?.Fulfillment()?.CheckCompletion();
