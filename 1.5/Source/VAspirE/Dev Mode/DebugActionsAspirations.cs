@@ -28,10 +28,5 @@ public static class DebugActionsAspirations
            .ToList();
     }
 
-//    [DebugAction("Pawns", actionType = DebugActionType.ToolMapForPawns)]
-//    [UsedImplicitly]
-//    public static void ResetAspirations(Pawn p)
-//    {
-//        p.needs?.Fulfillment()?.DebugResetCompletion();
-//    }
+
 }

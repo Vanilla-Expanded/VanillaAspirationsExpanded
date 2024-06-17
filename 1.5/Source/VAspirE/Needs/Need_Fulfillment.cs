@@ -22,7 +22,7 @@ public class Need_Fulfillment : Need
 
     public override float MaxLevel => 4;
 
-    public override bool ShowOnNeedList => pawn.IsColonistPlayerControlled;
+    public override bool ShowOnNeedList => WorldComponent_PawnList.colonists_with_fulfillment_need.Contains(pawn);
 
     public int NumCompleted => completedTicks.Count(tick => tick != -1);
 
@@ -156,10 +156,7 @@ public class Need_Fulfillment : Need
         completedTicks.RemoveAt(i);
     }
 
-//    public void DebugResetCompletion()
-//    {
-//        for (var i = 0; i < completedTicks.Count; i++) completedTicks[i] = -1;
-//    }
+  
 
     public override void ExposeData()
     {

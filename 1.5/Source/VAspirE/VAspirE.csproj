@@ -308,8 +308,11 @@
   <ItemGroup>
     <Compile Include="Defs\AspirationDef.cs" />
     <Compile Include="DefOfs\AspirationDefOf.cs" />
+    <Compile Include="World and Map Components\MapComponent_PawnList.cs" />
+    <Compile Include="World and Map Components\WorldComponent_PawnList.cs" />
     <Compile Include="Harmony\CompAbilityEffect_FleshbeastFromCorpse_Apply.cs" />
     <Compile Include="Harmony\HarmonyInstance.cs" />
+    <Compile Include="Harmony\StoryWatcher_PopAdaptation_Notify_PawnEvent.cs" />
     <Compile Include="Mod\AspirationsMod.cs" />
     <Compile Include="StaticCollections\StaticCollectionsClass.cs" />
     <Compile Include="Utility\AspirationsUtility.cs" />

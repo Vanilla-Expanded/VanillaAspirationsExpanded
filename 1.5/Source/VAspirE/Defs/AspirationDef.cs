@@ -243,6 +243,8 @@ public class AspirationWorker
     {
         if(pawn is null) return false;
 
+        if (!(DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power") is null) && pawn.genes?.HasActiveGene(DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power"))==true) return false;
+
         if (ModsConfig.BiotechActive && !def.invalidXenotypes.NullOrEmpty() && def.invalidXenotypes.Contains(pawn.genes?.Xenotype)) return false;
 
         if (def.requiredTrait != null && pawn.story?.traits?.HasTrait(def.requiredTrait)==false) return false;
