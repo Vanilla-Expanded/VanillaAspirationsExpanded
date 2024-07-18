@@ -259,7 +259,7 @@ public class AspirationWorker
 
         if (!def.invalidTraits.NullOrEmpty() && def.invalidTraits.Any(trait => trait.HasTrait(pawn))) return false;
 
-        if (!def.invalidGenes.NullOrEmpty() && def.invalidGenes.Any(gene => pawn.genes?.HasActiveGene(gene)==true)) return false;
+        if (ModsConfig.BiotechActive && !def.invalidGenes.NullOrEmpty() && def.invalidGenes.Any(gene => pawn.genes?.HasActiveGene(gene)==true)) return false;
 
         if (Current.ProgramState != ProgramState.MapInitializing&&def.requiredWorkTags != WorkTags.None && pawn.WorkTagIsDisabled(def.requiredWorkTags)) return false;
 
