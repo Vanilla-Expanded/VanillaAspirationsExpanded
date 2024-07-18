@@ -384,6 +384,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_CompleteMachineBody</iconPath>
 		<description>{0} would like to have 6 different artificial body parts.</description>
 		<satisfiedThought>ProsthophileHappy</satisfiedThought>
+		<requiredTrait>Transhumanist</requiredTrait>
 		<satisfiedThoughtDegreeRange>5~5</satisfiedThoughtDegreeRange>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>

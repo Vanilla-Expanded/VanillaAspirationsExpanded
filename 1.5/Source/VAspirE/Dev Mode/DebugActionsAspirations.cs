@@ -3,6 +3,8 @@ using System.Linq;
 using JetBrains.Annotations;
 using Verse;
 using LudeonTK;
+using RimWorld;
+using UnityEngine.Networking.Types;
 
 namespace VAspirE;
 
@@ -12,6 +14,7 @@ public static class DebugActionsAspirations
     [UsedImplicitly]
     public static void RemoveAspiration(Pawn p)
     {
+        DebugActionsUtility.DustPuffFrom(p);
         var fulfillment = p.needs?.Fulfillment();
         if (fulfillment == null) return;
         Find.WindowStack.Add(new Dialog_DebugOptionListLister(fulfillment
@@ -22,11 +25,19 @@ public static class DebugActionsAspirations
     [DebugAction("Pawns")]
     [UsedImplicitly]
     public static List<DebugActionNode> AddAspiration()
-    {
-        return DefDatabase<AspirationDef>.AllDefs.Select(aspir =>
-                new DebugActionNode(aspir.LabelCap, DebugActionType.ToolMapForPawns, pawnAction: p => p.needs?.Fulfillment()?.DebugAddAspiration(aspir)))
-           .ToList();
+    {     
+        List<DebugActionNode> list = new List<DebugActionNode>();
+        foreach (AspirationDef aspiration in DefDatabase<AspirationDef>.AllDefs)
+        {              
+            list.Add(new DebugActionNode(aspiration.defName, DebugActionType.ToolMapForPawns)
+            {
+                pawnAction = delegate (Pawn p)
+                {
+                    p.needs?.Fulfillment()?.DebugAddAspiration(aspiration);
+                    DebugActionsUtility.DustPuffFrom(p);
+                },               
+            });
+        }
+        return list;
     }
-
-
 }
