@@ -29,7 +29,7 @@ public static class DebugActionsAspirations
         List<DebugActionNode> list = new List<DebugActionNode>();
         foreach (AspirationDef aspiration in DefDatabase<AspirationDef>.AllDefs)
         {              
-            list.Add(new DebugActionNode(aspiration.defName, DebugActionType.ToolMapForPawns)
+            list.Add(new DebugActionNode(aspiration.LabelCap, DebugActionType.ToolMapForPawns)
             {
                 pawnAction = delegate (Pawn p)
                 {
