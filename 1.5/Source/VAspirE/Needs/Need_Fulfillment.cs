@@ -41,7 +41,7 @@ public class Need_Fulfillment : Need
         var num = Rand.Bool ? 4 : 5;
         for (var i = 0; i < num; i++)
             if (DefDatabase<AspirationDef>.AllDefs
-               .Where(aspirationDef => aspirationDef.Worker.ValidOn(pawn) && !Aspirations.Contains(aspirationDef))
+               .Where(aspirationDef => aspirationDef.Worker.ValidOn(pawn) && !Aspirations.Contains(aspirationDef) && VanillaAspirationsExpanded_Mod.settings.aspirationStates[aspirationDef.defName])
                .TryRandomElement(out var aspiration))
             {
                 Aspirations.Add(aspiration);
@@ -66,7 +66,7 @@ public class Need_Fulfillment : Need
                 completedTicks.Add(-1);
             }
             else if (DefDatabase<AspirationDef>.AllDefs
-                    .Where(aspirationDef => aspirationDef.Worker.ValidOn(pawn) && !Aspirations.Contains(aspirationDef))
+                    .Where(aspirationDef => aspirationDef.Worker.ValidOn(pawn) && !Aspirations.Contains(aspirationDef) && VanillaAspirationsExpanded_Mod.settings.aspirationStates[aspirationDef.defName])
                     .TryRandomElement(out var aspiration))
             {
                 Aspirations.Add(aspiration);

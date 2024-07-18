@@ -33,4 +33,7 @@
     <VAspirE.FullfilledGrowthMoment>{0} has achieved fulfillment from their aspirations and has experienced a growth moment.</VAspirE.FullfilledGrowthMoment>
     <VAspirE.FullfilledGrowthMoment.Desc>{0_nameDef} has demonstrated excellent determination in meeting their lifelong goals and is incredibly content with what they have achieved in their life. {0_nameDef} hopes that they have made a difference in the world.</VAspirE.FullfilledGrowthMoment.Desc>
 	<VAspirE.Scar> scar (permanent)</VAspirE.Scar>
+	<VAspirE.ModName>Vanilla Aspirations Expanded</VAspirE.ModName>
+	<VAspirE.Search>Search</VAspirE.Search>
+	<VAspirE.Enabled>{0} enabled</VAspirE.Enabled>
 </LanguageData>

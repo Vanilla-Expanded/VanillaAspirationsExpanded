@@ -305,6 +305,8 @@
   <ItemGroup>
     <Compile Include="Defs\AspirationDef.cs" />
     <Compile Include="DefOfs\AspirationDefOf.cs" />
+    <Compile Include="Options\VanillaAspirationsExpanded_Settings.cs" />
+    <Compile Include="Options\VanillaAspirationsExpanded_SettingsController.cs" />
     <Compile Include="World and Map Components\MapComponent_PawnList.cs" />
     <Compile Include="World and Map Components\WorldComponent_PawnList.cs" />
     <Compile Include="Harmony\CompAbilityEffect_FleshbeastFromCorpse_Apply.cs" />
