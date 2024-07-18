@@ -90,7 +90,7 @@ public class Need_Fulfillment : Need
             aspirRect.width /= 5;
             aspirRect.x += aspirRect.width * i;
 
-            if (Aspirations[i].Worker.IsCompleted(this.pawn))
+            if (IsComplete(Aspirations[i]))
             {
                 GUI.DrawTexture(aspirRect, Aspirations[i].Icon);
             }
