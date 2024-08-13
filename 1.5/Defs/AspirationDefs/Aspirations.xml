@@ -144,6 +144,12 @@
 		<iconPath>UI/AspirationIcons/Aspiration_ConnectWithGauranlenTree</iconPath>
 		<description>{0} would love to connect with a Gauranlen tree in a tree linking ceremony.</description>
 		<workerClass>VAspirE.AspirationWorker_Manual</workerClass>
+		<requiredWorkTags>
+			 <li>ManualSkilled</li>
+			  <li>PlantWork</li>
+			  <li>Commoner</li>
+			  <li>AllWork</li>
+		</requiredWorkTags>
 		<satisfiedWhenText>{0} connects to a Gauranlen tree via tree linking ceremony.</satisfiedWhenText>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>

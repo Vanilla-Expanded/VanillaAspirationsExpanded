@@ -115,7 +115,7 @@ public class Need_Fulfillment : Need
         completedTicks[idx] = GenTicks.TicksAbs;
         Messages.Message("VAspireE.AspirationComplete".Translate(pawn.NameFullColored, def.LabelCap), pawn, MessageTypeDefOf.PositiveEvent);
         CurLevel += 1;
-        if (CurLevel >= 4)
+        if (CurLevel == 4)
         {
             var letter = (ChoiceLetter_AspirationsFulfilled)LetterMaker.MakeLetter(AspirationDefOf.VAspirE_Fulfilled);
             letter.ConfigureFulfillmentLetter(pawn);
