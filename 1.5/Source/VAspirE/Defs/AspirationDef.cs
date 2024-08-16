@@ -365,10 +365,10 @@ public class AspirationWorker
 
         }
 
-        if (ModsConfig.RoyaltyActive && def.satisfiedRoyalTitle != null)
+        if (ModsConfig.RoyaltyActive && def.satisfiedRoyalTitle != null && Faction.OfEmpire != null)
         {
-            if (pawn.royalty.HasAnyTitleIn(Faction.OfEmpire) && (pawn.royalty.HasTitle(def.satisfiedRoyalTitle) ||
-                pawn.royalty.highestTitles[Faction.OfEmpire].seniority > def.satisfiedRoyalTitle.seniority))
+            if (pawn.royalty?.HasAnyTitleIn(Faction.OfEmpire)==true && (pawn.royalty?.HasTitle(def.satisfiedRoyalTitle) == true ||
+                pawn.royalty?.highestTitles[Faction.OfEmpire]?.seniority > def.satisfiedRoyalTitle?.seniority))
             {
                 return true;
             }
