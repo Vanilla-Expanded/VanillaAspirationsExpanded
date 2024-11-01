@@ -33,6 +33,7 @@ public class AspirationDef : Def
     public string satisfiedWhenText;
 
     public HediffDef satisfiedHediff;
+    public List<HediffDef> satisfiedHediffAny;
     public bool hediffPermanent;
     public int numberOfHediffs = 1;
     public HediffDef satisfiedHediffRemoval;
@@ -296,12 +297,12 @@ public class AspirationWorker
             }
 
         }
-        if (def.satisfiedHediff != null && pawn.health?.hediffSet != null)
+        if ((def.satisfiedHediff != null || !def.satisfiedHediffAny.NullOrEmpty())&& pawn.health?.hediffSet != null)
         {
             if (def.hediffPermanent)
             {
                 var hediffs = new List<Hediff>();
-                pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => hediff.def == def.satisfiedHediff&&hediff.TryGetComp<HediffComp_GetsPermanent>()?.IsPermanent == true);
+                pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => (hediff.def == def.satisfiedHediff || def.satisfiedHediffAny?.Contains(hediff.def)==true) && hediff.TryGetComp<HediffComp_GetsPermanent>()?.IsPermanent == true);
                 if(hediffs.Count >= def.numberOfHediffs) {
                     return true;
                 }
@@ -309,7 +310,7 @@ public class AspirationWorker
             else
             {
                 var hediffs = new List<Hediff>();
-                pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => hediff.def == def.satisfiedHediff);
+                pawn.health.hediffSet.GetHediffs(ref hediffs, hediff => hediff.def == def.satisfiedHediff || def.satisfiedHediffAny?.Contains(hediff.def) == true);
                 foreach (var hediff in hediffs)
                     if (def.satisfiedHediffSeverityRange.Includes(hediff.Severity))
                         return true;
