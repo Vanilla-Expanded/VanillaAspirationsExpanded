@@ -26,7 +26,7 @@ public class ChoiceLetter_GrowthMoment_Aspirations : ChoiceLetter_GrowthMoment
         if (choiceMade || pawn.DestroyedOrNull()) return;
 
         if (aspirationChoiceCount > 0 && aspirationChoices == null)
-            aspirationChoices = DefDatabase<AspirationDef>.AllDefs.Where(aspir => aspir.Worker.ValidOn(pawn))
+            aspirationChoices = DefDatabase<AspirationDef>.AllDefs.Where(aspir => aspir.Worker.ValidOn(pawn) && VanillaAspirationsExpanded_Mod.settings.aspirationStates[aspir.defName])
                .InRandomOrder()
                .Take(aspirationChoiceCount)
                .ToList();
