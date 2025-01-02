@@ -193,6 +193,9 @@
 		<iconPath>UI/AspirationIcons/Aspiration_ConsumeHumanMeat</iconPath>
 		<description>{0} wants to see what long pig tastes like.</description>
 		<requiredTrait>Psychopath</requiredTrait>
+		<invalidTraits>
+			<li>Cannibal</li>
+		</invalidTraits>
 		<satisfiedThoughtsAny>
 			<li>AteHumanlikeMeatDirect</li>
 			<li>AteHumanlikeMeatDirectCannibal</li>
