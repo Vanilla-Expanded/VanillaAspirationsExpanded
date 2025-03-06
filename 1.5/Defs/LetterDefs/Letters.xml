@@ -3,6 +3,6 @@
     <LetterDef ParentName="PositiveEvent">
         <defName>VAspirE_Fulfilled</defName>
         <letterClass>VAspirE.ChoiceLetter_AspirationsFulfilled</letterClass>
-        <arriveSound>ChildBecomesAdult</arriveSound>
-      </LetterDef>
+        <arriveSound>CryptosleepCasket_Accept</arriveSound>
+    </LetterDef>
 </Defs>

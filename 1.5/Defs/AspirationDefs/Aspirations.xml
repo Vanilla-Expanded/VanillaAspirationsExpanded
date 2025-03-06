@@ -201,12 +201,12 @@
 			<li>AteHumanlikeMeatDirectCannibal</li>
 			<li>AteHumanlikeMeatAsIngredient</li>
 			<li>AteHumanlikeMeatAsIngredientCannibal</li>
-			<li>AteHumanMeat_Abhorrent</li>
-			<li>AteHumanMeat_Horrible</li>
-			<li>AteHumanMeat_Disapproved</li>
-			<li>AteHumanMeat_Preferred</li>
-			<li>AteHumanMeat_RequiredStrong</li>
-			<li>AteHumanMeat_RequiredRavenous</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AteHumanMeat_Abhorrent</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AteHumanMeat_Horrible</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AteHumanMeat_Disapproved</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AteHumanMeat_Preferred</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AteHumanMeat_RequiredStrong</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AteHumanMeat_RequiredRavenous</li>
 		</satisfiedThoughtsAny>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
@@ -250,7 +250,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_GrowOld</iconPath>
 		<description>{0} wants to live long enough to see a different person in the mirror.</description>
 		<invalidGenes>
-			<li>Ageless</li>
+			<li MayRequire="Ludeon.RimWorld.Biotech">Ageless</li>
 		</invalidGenes>
 		<satisfiedWhenText>{0} gets birthday event/becomes 65, whichever comes first.</satisfiedWhenText>
 		<workerClass>VAspirE.AspirationWorker_GrowOld</workerClass>
