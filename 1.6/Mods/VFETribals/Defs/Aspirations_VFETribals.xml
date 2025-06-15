@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_EarnACornerstone</defName>
+		<label>earn a cornerstone</label>
+		<iconPath>UI/AspirationIcons/Aspiration_EarnCornerstone</iconPath>
+		<description>{0} desires to witness the technological advancement of their faction, the achievement of the cornerstone.</description>
+		<satisfiedRitualOutcomesAny>
+			<li>VFET_AdvanceToNeolithic_Behaviour</li>
+			<li>VFET_AdvanceToMedieval_Behaviour</li>
+			<li>VFET_AdvanceToIndustrial_Behaviour</li>
+			<li>VFET_AdvanceToSpacer_Behaviour</li>
+			<li>VFET_AdvanceToUltra_Behaviour</li>
+		</satisfiedRitualOutcomesAny>
+		<satisfiedWhenText>{0} participates in any of the tech advancement rituals.</satisfiedWhenText>
+		<workerClass>VAspirE.AspirationWorker_RitualParticipation</workerClass>
+	</VAspirE.AspirationDef>
+</Defs>

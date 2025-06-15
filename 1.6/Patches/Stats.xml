@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/StatDef[defName="MentalBreakThreshold"]/parts</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/StatDef[defName="MentalBreakThreshold"]</xpath>
+            <value><parts /></value>
+        </nomatch>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/StatDef[defName="MentalBreakThreshold"]/parts</xpath>
+        <value>
+            <li Class="VAspirE.StatPart_Aspirations">
+                <offsetPerAspiration>-0.03</offsetPerAspiration>
+            </li>
+        </value>
+    </Operation>
+</Patch>

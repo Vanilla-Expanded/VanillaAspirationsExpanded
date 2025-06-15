@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_BecomeAnAndroidLover</defName>
+		<label>become an android lover</label>
+		<iconPath>UI/AspirationIcons/Aspiration_BecomeAndroidLover</iconPath>
+		<description>{0} wants to fall in love with an android.</description>
+		
+		<invalidTraits>
+			<li MayRequire="VanillaExpanded.VanillaTraitsExpanded">VTE_Technophobe</li>
+           
+        </invalidTraits>
+		<workerClass>VAspirE.AspirationWorker_GetAndroidLover</workerClass>
+		<invalidXenotypes>
+            <li>VREA_AndroidBasic</li>
+            <li>VREA_AndroidAwakened</li>
+            
+        </invalidXenotypes>
+		<satisfiedWhenText>{0} becomes lovers with a pawn that has the Power (android) gene.</satisfiedWhenText>
+		
+	</VAspirE.AspirationDef>
+</Defs>

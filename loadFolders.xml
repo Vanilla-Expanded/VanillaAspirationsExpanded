@@ -17,6 +17,23 @@
 		<li IfModActive="sarg.alphagenes">1.5/Mods/AlphaGenes</li>
 		<li IfModActive="VanillaExpanded.VFEA">1.5/Mods/VFEAncients</li>
 	</v1.5>
+	<v1.6>
+		<li>/</li>
+		<li>1.6</li>
+		<li IfModActive="vanillaracesexpanded.archon">1.6/Mods/VREArchon</li>
+		<li IfModActive="OskarPotocki.VanillaVehiclesExpandedTier3">1.6/Mods/VVETier3</li>
+		<li IfModActive="vanillaracesexpanded.fungoid">1.6/Mods/VREFungoid</li>
+		<li IfModActive="vanillaracesexpanded.android">1.6/Mods/VREAndroid</li>
+		<li IfModActive="OskarPotocki.VFE.Empire">1.6/Mods/VFEEmpire</li>
+		<li IfModActive="VanillaExpanded.VAERoy">1.6/Mods/VAERoyal</li>
+		<li IfModActive="OskarPotocki.VFE.Classical">1.6/Mods/VFEClassical</li>
+		<li IfModActive="OskarPotocki.VFE.Pirates">1.6/Mods/VFEPirates</li>
+		<li IfModActive="OskarPotocki.VFE.Tribals">1.6/Mods/VFETribals</li>
+		<li IfModActive="VanillaExpanded.VGeneticsE">1.6/Mods/VEGenetics</li>
+		<li IfModActive="OskarPotocki.VFE.Deserters">1.6/Mods/VFEDeserters</li>
+		<li IfModActive="sarg.alphagenes">1.6/Mods/AlphaGenes</li>
+		
+	</v1.6>
 </loadFolders>
 
 

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+
+	
+	
+	<ThoughtDef>
+		<defName>VAE_WitnessedFleshShaping</defName>
+		<durationDays>0.5</durationDays>
+		
+		<stages>
+			<li>
+				<label>witnessed flesh shaping</label>
+				<description>A bit shocking, to say the least.</description>
+				<baseMoodEffect>-1</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+
+
+
+</Defs>

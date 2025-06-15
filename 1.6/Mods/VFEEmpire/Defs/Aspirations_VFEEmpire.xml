@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_BecomeAConsul</defName>
+		<label>become a consul</label>
+		<iconPath>UI/AspirationIcons/Aspiration_BecomeConsul</iconPath>
+		<description>{0} wants to gain a rank of a consul in the imperial hierarchy.</description>
+		<satisfiedWhenText>{0} reaches the rank of Consul.</satisfiedWhenText>
+		<satisfiedRoyalTitle>Consul</satisfiedRoyalTitle>
+	</VAspirE.AspirationDef>
+	<VAspirE.AspirationDef>
+		<defName>VAspirE_DrinkAperitif</defName>
+		<label>drink aperitif</label>
+		<iconPath>UI/AspirationIcons/Aspiration_DrinkAperitif</iconPath>
+		<description>{0} would like to taste the luxury that is the aperitif.</description>
+		<satisfiedHediff>VFEE_IngestedAperitif</satisfiedHediff>
+	</VAspirE.AspirationDef>
+</Defs>
