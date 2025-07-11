@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Odyssey</li>
+        </mods>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/VAspirE.AspirationDef[defName="VAspirE_BeBondedToARoyalAnimal"]/thingDefsForRelation</xpath>
+            <value>
+                <li>VAERoy_Peacock</li>
+                <li>VAERoy_Quail</li>
+                <li>VAERoy_Swan</li>
+            </value>
+        </nomatch>
+    </Operation>
+</Patch>

@@ -12,11 +12,11 @@
 			<li>VAERoy_Crane</li>
 			<li>VAERoy_Megachicken</li>
 			<li>VAERoy_Orangutan</li>
-			<li>VAERoy_Peacock</li>
+			<li MayRequire="Ludeon.RimWorld.Odyssey">Peacock</li>
 			<li>VAERoy_Pheasant</li>
-			<li>VAERoy_Quail</li>
+			<li MayRequire="Ludeon.RimWorld.Odyssey">Quail</li>
 			<li>VAERoy_RoyalTiger</li>
-			<li>VAERoy_Swan</li>
+			<li MayRequire="Ludeon.RimWorld.Odyssey">Swan</li>
 		</thingDefsForRelation>
 	</VAspirE.AspirationDef>
 </Defs>
