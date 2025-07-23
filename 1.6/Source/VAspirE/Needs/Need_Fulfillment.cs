@@ -113,7 +113,10 @@ public class Need_Fulfillment : Need
         if (idx == -1) return;
         if (completedTicks[idx] != -1) return;
         completedTicks[idx] = GenTicks.TicksAbs;
-        Messages.Message("VAspireE.AspirationComplete".Translate(pawn.NameFullColored, def.LabelCap), pawn, MessageTypeDefOf.PositiveEvent);
+        if (pawn.Map != null)
+        {
+            Messages.Message("VAspireE.AspirationComplete".Translate(pawn.NameFullColored, def.LabelCap), pawn, MessageTypeDefOf.PositiveEvent);
+        }
         CurLevel += 1;
         if (CurLevel == 4)
         {

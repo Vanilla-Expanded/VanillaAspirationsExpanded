@@ -76,7 +76,7 @@
 			<PsychicSensitivity>-2</PsychicSensitivity>
 		</invalidTraits>
 		<invalidGenes>
-			<li>PsychicAbility_Deaf</li>
+			<li MayRequire="Ludeon.RimWorld.BioTech">PsychicAbility_Deaf</li>
 		</invalidGenes>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
@@ -413,7 +413,7 @@
 			<PsychicSensitivity>-2</PsychicSensitivity>
 		</invalidTraits>
 		<invalidGenes>
-			<li>PsychicAbility_Deaf</li>
+			<li MayRequire="Ludeon.RimWorld.BioTech">PsychicAbility_Deaf</li>
 		</invalidGenes>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
