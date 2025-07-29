@@ -10,6 +10,10 @@ public class AspirationWorker_CanHaveKids : AspirationWorker
     public AspirationWorker_CanHaveKids(AspirationDef def) : base(def) { }
 
     public override bool ValidOn(Pawn pawn) {
+        if (!Find.Storyteller.difficulty.ChildrenAllowed)
+        {
+            return false;
+        }
         if (DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power") != null)
         {
             return pawn?.genes?.HasActiveGene(DefDatabase<GeneDef>.GetNamed("VREA_Power")) == false;
