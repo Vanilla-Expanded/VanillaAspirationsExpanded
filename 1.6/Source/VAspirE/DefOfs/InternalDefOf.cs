@@ -19,5 +19,8 @@ namespace VAspirE
 
         public static TraitDef Beauty;
         public static ThoughtDef VAE_WitnessedFleshShaping;
+
+        [MayRequire("vanillaracesexpanded.android")]
+        public static GeneDef VREA_Power;
     }
 }

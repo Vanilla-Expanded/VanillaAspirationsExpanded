@@ -244,7 +244,7 @@ public class AspirationWorker
     {
         if(pawn is null) return false;
 
-        if (!(DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power") is null) && pawn.genes?.HasActiveGene(DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power"))==true) return false;
+        if (InternalDefOf.VREA_Power is not null && pawn.genes?.HasActiveGene(InternalDefOf.VREA_Power)==true) return false;
 
         if (ModsConfig.BiotechActive && !def.invalidXenotypes.NullOrEmpty() && def.invalidXenotypes.Contains(pawn.genes?.Xenotype)) return false;
 
@@ -436,6 +436,11 @@ public class AspirationWorker
                 if (thoughtDef.IsSituational && thoughtDef.Worker.CurrentState(pawn).ActiveFor(thoughtDef)) return true;
             }
 
+        return false;
+    }
+
+    public virtual bool IsCompletedDaily(Pawn pawn)
+    {
         return false;
     }
 }

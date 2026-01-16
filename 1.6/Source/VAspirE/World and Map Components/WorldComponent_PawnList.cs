@@ -25,8 +25,7 @@ public class WorldComponent_PawnList : WorldComponent
         if(pawnJustAdded != null){ 
             pawns.Add(pawnJustAdded);
         }
-        GeneDef gene = DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power");
-        if (gene == null)
+        if (InternalDefOf.VREA_Power == null)
         {
             colonists_with_fulfillment_need = pawns;
         }
@@ -34,7 +33,7 @@ public class WorldComponent_PawnList : WorldComponent
         {
             foreach (Pawn pawn in pawns)
             {
-                if (pawn?.genes?.HasActiveGene(gene)==false)
+                if (pawn?.genes?.HasActiveGene(InternalDefOf.VREA_Power)==false)
                 {
                     colonists_with_fulfillment_need.Add(pawn);
                 }

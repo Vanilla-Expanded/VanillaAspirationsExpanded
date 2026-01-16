@@ -11,7 +11,7 @@ public static class SatisfactionPatches
     public static void Apply(Harmony harm)
     {
         harm.Patch(AccessTools.Method(typeof(Pawn_RelationsTracker), "GainedOrLostDirectRelation"),
-            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneralDaily)));
         harm.Patch(AccessTools.Method(typeof(HediffSet), nameof(HediffSet.AddDirect)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(RitualOutcomeEffectWorker_AnimaTreeLinking), nameof(RitualOutcomeEffectWorker_AnimaTreeLinking.Apply)),
@@ -63,6 +63,11 @@ public static class SatisfactionPatches
         
        
         ___pawn?.needs?.Fulfillment()?.CheckCompletion();
+    }
+
+    public static void CheckGeneralDaily(Pawn ___pawn)
+    {
+        ___pawn?.needs?.Fulfillment()?.CheckCompletion(true);
     }
 
     public static void OnTreeLinkPsychic(LordJob_Ritual jobRitual)
