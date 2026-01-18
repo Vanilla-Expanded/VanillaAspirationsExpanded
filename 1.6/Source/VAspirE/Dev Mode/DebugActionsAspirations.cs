@@ -9,7 +9,7 @@ namespace VAspirE;
 
 public static class DebugActionsAspirations
 {
-    [DebugAction("Pawns", actionType = DebugActionType.ToolMapForPawns)]
+    [DebugAction(DebugActionCategories.Pawns, actionType = DebugActionType.ToolMapForPawns)]
     [UsedImplicitly]
     public static void RemoveAspiration(Pawn p)
     {
@@ -21,7 +21,7 @@ public static class DebugActionsAspirations
                 new DebugMenuOption(aspir.LabelCap, DebugMenuOptionMode.Action, () => fulfillment.DebugRemoveAspiration(aspir)))));
     }
 
-    [DebugAction("Pawns")]
+    [DebugAction(DebugActionCategories.Pawns)]
     [UsedImplicitly]
     public static List<DebugActionNode> AddAspiration()
     {
@@ -59,7 +59,7 @@ public static class DebugActionsAspirations
         return list;
     }
 
-    [DebugAction("Pawns", actionType = DebugActionType.ToolMapForPawns)]
+    [DebugAction(DebugActionCategories.Pawns, actionType = DebugActionType.ToolMapForPawns)]
     [UsedImplicitly]
     public static void FulfilAspiration(Pawn p)
     {
@@ -73,5 +73,27 @@ public static class DebugActionsAspirations
             .Where(aspir => !fulfillment.IsComplete(aspir))
             .Select(aspir =>
                 new DebugMenuOption(aspir.LabelCap, DebugMenuOptionMode.Action, () => fulfillment.Complete(aspir))))));
+    }
+
+    [DebugAction(DebugActionCategories.Pawns, actionType = DebugActionType.ToolMapForPawns)]
+    [UsedImplicitly]
+    public static void AddAllAspirations(Pawn p)
+    {
+        DebugActionsUtility.DustPuffFrom(p);
+        var fulfillment = p.needs?.Fulfillment();
+        if (fulfillment == null) return;
+        Find.WindowStack.Add(new Dialog_DebugOptionListLister([
+            new DebugMenuOption("All", DebugMenuOptionMode.Action, () => AddAspirations(false)),
+            new DebugMenuOption("Valid only", DebugMenuOptionMode.Action, () =>AddAspirations(true) )
+        ]));
+    
+        void AddAspirations(bool checkForValid)
+        {
+            foreach (var def in DefDatabase<AspirationDef>.AllDefs)
+            {
+                if (!fulfillment.Aspirations.Contains(def) && (!checkForValid || def.Worker.ValidOn(p)))
+                    fulfillment.DebugAddAspiration(def);
+            }
+        }
     }
 }

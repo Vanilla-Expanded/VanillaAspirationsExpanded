@@ -14,9 +14,9 @@ public class AspirationWorker_CanHaveKids : AspirationWorker
         {
             return false;
         }
-        if (DefDatabase<GeneDef>.GetNamedSilentFail("VREA_Power") != null)
+        if (InternalDefOf.VREA_Power != null)
         {
-            return pawn?.genes?.HasActiveGene(DefDatabase<GeneDef>.GetNamed("VREA_Power")) == false;
+            return pawn?.genes?.HasActiveGene(InternalDefOf.VREA_Power) == false;
 
         }
         return base.ValidOn(pawn);
@@ -109,13 +109,13 @@ public class AspirationWorker_BecomeLiked : AspirationWorker
 {
     public AspirationWorker_BecomeLiked(AspirationDef def) : base(def) { }
 
-    public override bool IsCompleted(Pawn pawn)
+    public override bool IsCompletedDaily(Pawn pawn)
     {
         if (Current.ProgramState == ProgramState.MapInitializing) return false;
         var count = 0;
         if (pawn != null)
         {
-            foreach (var otherPawn in pawn.relations?.RelatedPawns?.Concat(SocialCardUtility.PawnsForSocialInfo(pawn)))
+            foreach (var otherPawn in SocialCardUtility.PawnsForSocialInfo(pawn).ConcatIfNotNull(pawn.relations?.RelatedPawns).Distinct())
                 if (otherPawn?.relations?.OpinionOf(pawn) > 0)
                     count++;
         }
@@ -127,13 +127,13 @@ public class AspirationWorker_BecomeDisliked : AspirationWorker
 {
     public AspirationWorker_BecomeDisliked(AspirationDef def) : base(def) { }
 
-    public override bool IsCompleted(Pawn pawn)
+    public override bool IsCompletedDaily(Pawn pawn)
     {
         if (Current.ProgramState == ProgramState.MapInitializing) return false;
         var count = 0;
         if (pawn != null)
         {
-            foreach (var otherPawn in pawn.relations?.RelatedPawns?.Concat(SocialCardUtility.PawnsForSocialInfo(pawn)))
+            foreach (var otherPawn in SocialCardUtility.PawnsForSocialInfo(pawn).ConcatIfNotNull(pawn.relations?.RelatedPawns).Distinct())
                 if (otherPawn?.relations?.OpinionOf(pawn) < 0)
                     count++;
         }
@@ -174,9 +174,9 @@ public class AspirationWorker_Nuzzled : AspirationWorker
         {
             foreach (var thingDef in def.satisfiedNuzzledByAny)
             {
-                if (StaticCollectionsClass.pawns_nuzzled.ContainsKey(pawn))
+                if (StaticCollectionsClass.pawns_nuzzled.TryGetValue(pawn, out var animal))
                 {
-                    if (StaticCollectionsClass.pawns_nuzzled[pawn].def == thingDef)
+                    if (animal.def == thingDef)
                     {
                         return true;
                     }
@@ -196,9 +196,9 @@ public class AspirationWorker_RitualParticipation : AspirationWorker
         {
             foreach (var ritualOutcome in def.satisfiedRitualOutcomesAny)
             {
-                if (StaticCollectionsClass.rituals_and_pawns.ContainsKey(ritualOutcome))
+                if (StaticCollectionsClass.rituals_and_pawns.TryGetValue(ritualOutcome, out var pawnsAtRitual))
                 {
-                    if (StaticCollectionsClass.rituals_and_pawns[ritualOutcome].Contains(pawn))
+                    if (pawnsAtRitual.Contains(pawn))
                     {
                         return true;
                     }

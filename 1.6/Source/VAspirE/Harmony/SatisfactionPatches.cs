@@ -11,14 +11,14 @@ public static class SatisfactionPatches
     public static void Apply(Harmony harm)
     {
         harm.Patch(AccessTools.Method(typeof(Pawn_RelationsTracker), "GainedOrLostDirectRelation"),
-            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneralDaily)));
         harm.Patch(AccessTools.Method(typeof(HediffSet), nameof(HediffSet.AddDirect)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(RitualOutcomeEffectWorker_AnimaTreeLinking), nameof(RitualOutcomeEffectWorker_AnimaTreeLinking.Apply)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnTreeLinkPsychic)));
         harm.Patch(AccessTools.Method(typeof(MemoryThoughtHandler), nameof(MemoryThoughtHandler.TryGainMemory), new[] { typeof(Thought_Memory), typeof(Pawn) }),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
-      harm.Patch(AccessTools.Method(typeof(Pawn_RoyaltyTracker), "OnPostTitleChanged"),
+        harm.Patch(AccessTools.Method(typeof(Pawn_RoyaltyTracker), "OnPostTitleChanged"),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(Pawn_GeneTracker), nameof(Pawn_GeneTracker.SetXenotypeDirect)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
@@ -30,11 +30,11 @@ public static class SatisfactionPatches
             if (type.GetMethods().FirstOrDefault(x => x.Name.Equals(nameof(Precept_Role.Assign)))?.IsDeclaredMember() == true)
                 harm.Patch(AccessTools.Method(type, nameof(Precept_Role.Assign)),
                     postfix: new(typeof(SatisfactionPatches), nameof(CheckArgP)));
-         harm.Patch(AccessTools.Method(typeof(RitualOutcomeEffectWorker_ConnectToTree), nameof(RitualOutcomeEffectWorker_ConnectToTree.Apply)),
+        harm.Patch(AccessTools.Method(typeof(RitualOutcomeEffectWorker_ConnectToTree), nameof(RitualOutcomeEffectWorker_ConnectToTree.Apply)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnTreeLinkGauranlen)));
         harm.Patch(AccessTools.Method(typeof(Pawn_AgeTracker), nameof(Pawn_AgeTracker.BirthdayBiological)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
-         harm.Patch(AccessTools.Method(typeof(InspirationHandler), nameof(InspirationHandler.TryStartInspiration)),
+        harm.Patch(AccessTools.Method(typeof(InspirationHandler), nameof(InspirationHandler.TryStartInspiration)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnInspiration)));
         harm.Patch(AccessTools.Method(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), new[] { typeof(Pawn), typeof(SkillDef), typeof(bool) }),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckQuality)));
@@ -45,24 +45,27 @@ public static class SatisfactionPatches
         harm.Patch(AccessTools.Method(typeof(SituationalThoughtHandler), nameof(SituationalThoughtHandler.UpdateAllMoodThoughts)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(Pawn_AbilityTracker), nameof(Pawn_AbilityTracker.GainAbility)),
-           postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(TraitSet), nameof(TraitSet.GainTrait)),
-           postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(RitualBehaviorWorker), nameof(RitualBehaviorWorker.Cleanup)),
-           postfix: new(typeof(SatisfactionPatches), nameof(CheckRituals)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckRituals)));
         harm.Patch(AccessTools.Method(typeof(JobDriver_Nuzzle), nameof(JobDriver_Nuzzle.MakeNewToils)),
-           postfix: new(typeof(SatisfactionPatches), nameof(CheckNuzzlers)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckNuzzlers)));
         harm.Patch(AccessTools.Method(typeof(RecipeWorker), nameof(RecipeWorker.Notify_IterationCompleted)),
-           postfix: new(typeof(SatisfactionPatches), nameof(CheckRecipes)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckRecipes)));
         harm.Patch(AccessTools.Method(typeof(Pawn_HealthTracker), nameof(Pawn_HealthTracker.RemoveHediff)),
-           postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
+            postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
     }
 
     public static void CheckGeneral(Pawn ___pawn)
     {
-        
-       
         ___pawn?.needs?.Fulfillment()?.CheckCompletion();
+    }
+
+    public static void CheckGeneralDaily(Pawn ___pawn)
+    {
+        ___pawn?.needs?.Fulfillment()?.CheckCompletion(true);
     }
 
     public static void OnTreeLinkPsychic(LordJob_Ritual jobRitual)
@@ -71,8 +74,7 @@ public static class SatisfactionPatches
         pawn?.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_AnimaTreeLink);
     }
 
-    public static void CheckArgP(Pawn p,bool addThoughts)
-
+    public static void CheckArgP(Pawn p, bool addThoughts)
     {
         p?.needs?.Fulfillment()?.CheckCompletion();
     }
@@ -104,15 +106,16 @@ public static class SatisfactionPatches
     {
         List<Pawn> listOfPawns = ritual.PawnsToCountTowardsPresence.ToList();
         StaticCollectionsClass.rituals_and_pawns.Add(__instance.def, listOfPawns);
-        foreach(Pawn pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_OfPlayerFaction)
+        foreach (Pawn pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_OfPlayerFaction)
         {
             pawn?.needs?.Fulfillment()?.CheckCompletion();
         }
         StaticCollectionsClass.rituals_and_pawns.Clear();
     }
+
     public static void CheckNuzzlers(JobDriver_Nuzzle __instance)
-    {       
-        StaticCollectionsClass.pawns_nuzzled.Add(__instance.TargetA.Pawn,__instance.pawn);
+    {
+        StaticCollectionsClass.pawns_nuzzled.Add(__instance.TargetA.Pawn, __instance.pawn);
         __instance.TargetA.Pawn?.needs?.Fulfillment()?.CheckCompletion();
         StaticCollectionsClass.pawns_nuzzled.Clear();
     }

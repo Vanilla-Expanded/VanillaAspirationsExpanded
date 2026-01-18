@@ -28,7 +28,7 @@ public class Need_Fulfillment : Need
 
     public override void NeedInterval()
     {
-        CheckCompletion();
+        CheckCompletion(pawn.IsHashIntervalTick(GenDate.TicksPerDay, NeedTunings.NeedUpdateInterval));
     }
 
     public override void SetInitialLevel()
@@ -49,7 +49,7 @@ public class Need_Fulfillment : Need
             }
 
         Rand.PopState();
-        CheckCompletion();
+        CheckCompletion(true);
     }
 
     public void SetAspirations(List<AspirationDef> aspirationDefs)
@@ -74,7 +74,7 @@ public class Need_Fulfillment : Need
             }
 
         Rand.PopState();
-        CheckCompletion();
+        CheckCompletion(true);
     }
 
     public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1, bool drawArrows = true, bool doTooltip = true,
@@ -133,13 +133,13 @@ public class Need_Fulfillment : Need
         return completedTicks[idx] != -1;
     }
 
-    public void CheckCompletion()
+    public void CheckCompletion(bool dailyCheck = false)
     {
         foreach (var aspirationDef in Aspirations)
             try
             {
                 if (!IsComplete(aspirationDef))
-                    if (aspirationDef.Worker.IsCompleted(pawn))
+                    if (aspirationDef.Worker.IsCompleted(pawn) || (dailyCheck && aspirationDef.Worker.IsCompletedDaily(pawn)))
                         Complete(aspirationDef);
             }
             catch (Exception e) { Log.Error($"[VAspirE] Exception while checking completion of {aspirationDef}: {e}"); }
@@ -147,6 +147,7 @@ public class Need_Fulfillment : Need
 
     public void DebugAddAspiration(AspirationDef def)
     {
+        if (Aspirations.Contains(def)) return;
         Aspirations.Add(def);
         completedTicks.Add(-1);
     }
