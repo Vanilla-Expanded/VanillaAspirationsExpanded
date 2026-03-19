@@ -4,7 +4,7 @@
         <defName>VAspirE_Fulfillment</defName>
         <needClass>VAspirE.Need_Fulfillment</needClass>
         <label>fulfillment</label>
-        <description>Fulfillment represents how happy someone is with their personal achievements in life. If they achieve their dreams and complete their lifetime goals, the fulfillment will increase. Each stage of fulfillment decreases mental break threshold. Achieving maximum fulfillment will result in a final growth moment.</description>
+        <description>Fulfillment represents how happy someone is with their personal achievements in life. If they achieve their dreams and complete their lifetime goals, the fulfillment will increase. Each stage of fulfillment decreases mental break threshold. Achieving 80% fulfillment will result in a final growth moment. Most people will have four aspirations, but some can have up to five.</description>
         <baseLevel>0</baseLevel>
         <listPriority>-100</listPriority>
         <minIntelligence>Humanlike</minIntelligence>

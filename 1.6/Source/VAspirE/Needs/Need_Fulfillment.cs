@@ -11,7 +11,7 @@ public class Need_Fulfillment : Need
 {
     public List<AspirationDef> Aspirations;
     private List<int> completedTicks;
-    public bool growthMomentReceived = false;
+   
 
     public Need_Fulfillment(Pawn pawn) : base(pawn) =>
         threshPercents = new()
@@ -21,7 +21,7 @@ public class Need_Fulfillment : Need
             0.75f
         };
 
-    public override float MaxLevel => 4;
+    public override float MaxLevel => 5;
 
     public override bool ShowOnNeedList => WorldComponent_PawnList.colonists_with_fulfillment_need.Contains(pawn);
 
@@ -119,7 +119,8 @@ public class Need_Fulfillment : Need
             Messages.Message("VAspireE.AspirationComplete".Translate(pawn.NameFullColored, def.LabelCap), pawn, MessageTypeDefOf.PositiveEvent);
         }
         CurLevel += 1;
-        if (CurLevel == 4 && !growthMomentReceived)
+       
+        if (CurLevel == 4)
         {
             var letter = (ChoiceLetter_AspirationsFulfilled)LetterMaker.MakeLetter(AspirationDefOf.VAspirE_Fulfilled);
             letter.ConfigureFulfillmentLetter(pawn);
@@ -171,7 +172,7 @@ public class Need_Fulfillment : Need
         base.ExposeData();
         Scribe_Collections.Look(ref Aspirations, "aspirations", LookMode.Def);
         Scribe_Collections.Look(ref completedTicks, nameof(completedTicks), LookMode.Value);
-        Scribe_Values.Look(ref growthMomentReceived, nameof(growthMomentReceived));
+       
 
     }
 }
