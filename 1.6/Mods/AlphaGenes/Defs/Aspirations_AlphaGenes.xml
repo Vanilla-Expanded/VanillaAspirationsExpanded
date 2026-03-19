@@ -16,6 +16,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_RaidBioLab</iconPath>
 		<description>{0} wants to raid a bio-lab.</description>
 		<satisfiedThought>AG_RaidedBioLab</satisfiedThought>
+		<invalidNonViolent>true</invalidNonViolent>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_UseXenotypeInjector</defName>
