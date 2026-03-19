@@ -11,6 +11,7 @@ public class Need_Fulfillment : Need
 {
     public List<AspirationDef> Aspirations;
     private List<int> completedTicks;
+    public bool growthMomentReceived = false;
 
     public Need_Fulfillment(Pawn pawn) : base(pawn) =>
         threshPercents = new()
@@ -118,7 +119,7 @@ public class Need_Fulfillment : Need
             Messages.Message("VAspireE.AspirationComplete".Translate(pawn.NameFullColored, def.LabelCap), pawn, MessageTypeDefOf.PositiveEvent);
         }
         CurLevel += 1;
-        if (CurLevel == 4)
+        if (CurLevel == 4 && !growthMomentReceived)
         {
             var letter = (ChoiceLetter_AspirationsFulfilled)LetterMaker.MakeLetter(AspirationDefOf.VAspirE_Fulfilled);
             letter.ConfigureFulfillmentLetter(pawn);
@@ -135,14 +136,17 @@ public class Need_Fulfillment : Need
 
     public void CheckCompletion(bool dailyCheck = false)
     {
-        foreach (var aspirationDef in Aspirations)
-            try
-            {
-                if (!IsComplete(aspirationDef))
-                    if (aspirationDef.Worker.IsCompleted(pawn) || (dailyCheck && aspirationDef.Worker.IsCompletedDaily(pawn)))
-                        Complete(aspirationDef);
-            }
-            catch (Exception e) { Log.Error($"[VAspirE] Exception while checking completion of {aspirationDef}: {e}"); }
+        if (ShowOnNeedList)
+        {
+            foreach (var aspirationDef in Aspirations)
+                try
+                {
+                    if (!IsComplete(aspirationDef))
+                        if (aspirationDef.Worker.IsCompleted(pawn) || (dailyCheck && aspirationDef.Worker.IsCompletedDaily(pawn)))
+                            Complete(aspirationDef);
+                }
+                catch (Exception e) { Log.Error($"[VAspirE] Exception while checking completion of {aspirationDef}: {e}"); }
+        }
     }
 
     public void DebugAddAspiration(AspirationDef def)
@@ -167,5 +171,7 @@ public class Need_Fulfillment : Need
         base.ExposeData();
         Scribe_Collections.Look(ref Aspirations, "aspirations", LookMode.Def);
         Scribe_Collections.Look(ref completedTicks, nameof(completedTicks), LookMode.Value);
+        Scribe_Values.Look(ref growthMomentReceived, nameof(growthMomentReceived));
+
     }
 }

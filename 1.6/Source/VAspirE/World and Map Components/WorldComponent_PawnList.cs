@@ -21,8 +21,9 @@ public class WorldComponent_PawnList : WorldComponent
 
     public static void RefreshNeedList(Pawn pawnJustAdded)
     {
-        List<Pawn> pawns = PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_Colonists_NoSlaves;
-        if(pawnJustAdded != null){ 
+        List<Pawn> pawns = PawnsFinder.AllMapsCaravansAndTravellingTransporters_AliveSpawned_FreeColonistsAndPrisoners;
+      
+        if (pawnJustAdded != null){ 
             pawns.Add(pawnJustAdded);
         }
         if (InternalDefOf.VREA_Power == null)

@@ -19,6 +19,7 @@ public class AspirationDef : Def
     public List<TraitRequirement> invalidTraits;
     public List<XenotypeDef> invalidXenotypes;
     public int minimumAge = -1;
+    public bool invalidNonViolent = false;
 
     //Requirements
 
@@ -247,6 +248,8 @@ public class AspirationWorker
         if (InternalDefOf.VREA_Power is not null && pawn.genes?.HasActiveGene(InternalDefOf.VREA_Power)==true) return false;
 
         if (ModsConfig.BiotechActive && !def.invalidXenotypes.NullOrEmpty() && def.invalidXenotypes.Contains(pawn.genes?.Xenotype)) return false;
+
+        if (def.invalidNonViolent  && pawn.WorkTagIsDisabled(WorkTags.Violent)) return false;
 
         if (def.requiredTrait != null && pawn.story?.traits?.HasTrait(def.requiredTrait)==false) return false;
 

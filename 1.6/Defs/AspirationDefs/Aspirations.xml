@@ -113,6 +113,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_WieldBladelinkWeapon</iconPath>
 		<description>{0} would like to bond with a bladelink weapon.</description>
 		<workerClass>VAspirE.AspirationWorker_WieldBladelink</workerClass>
+		<invalidNonViolent>true</invalidNonViolent>
 		<satisfiedWhenText>{0} psychically bonds with a bladelink weapon.</satisfiedWhenText>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
@@ -331,6 +332,7 @@
 		<requiredWorkTags>
 			<li>Violent</li>
 		</requiredWorkTags>
+		<invalidNonViolent>true</invalidNonViolent>
 		<workerClass>VAspirE.AspirationWorker_Manual</workerClass>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
@@ -367,6 +369,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_DefeatFactionLeader</iconPath>
 		<description>{0} wants to be the one to defeat an enemy faction leader.</description>
 		<satisfiedThought>DefeatedHostileFactionLeader</satisfiedThought>
+		<invalidNonViolent>true</invalidNonViolent>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_HaveWonderfulRoom</defName>
@@ -402,6 +405,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_DeadRival</iconPath>
 		<description>{0} would like to have a rival, and for them to die.</description>
 		<satisfiedThought>PawnWithBadOpinionDied</satisfiedThought>
+		<invalidNonViolent>true</invalidNonViolent>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef MayRequire="Ludeon.RimWorld.Royalty">
 		<defName>VAspirE_GainALevel5Psycast</defName>
@@ -554,6 +558,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_DestroyMechCluster</iconPath>
 		<description>{0} wants to completely destroy a mech cluster.</description>
 		<satisfiedThought>DefeatedMechCluster</satisfiedThought>
+		<invalidNonViolent>true</invalidNonViolent>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_DestroyInsectHive</defName>
@@ -561,6 +566,7 @@
 		<iconPath>UI/AspirationIcons/Aspiration_DestroyInsectHive</iconPath>
 		<description>{0} wants to completely destroy an insect hive.</description>
 		<satisfiedThought>DefeatedInsectHive</satisfiedThought>
+		<invalidNonViolent>true</invalidNonViolent>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_UseFireWeapon</defName>
@@ -569,6 +575,7 @@
 		<requiredTrait>Pyromaniac</requiredTrait>
 		<description>{0} wants to use a flame weapon in combat.</description>
 		<satisfiedThought>PyroUsed</satisfiedThought>
+		<invalidNonViolent>true</invalidNonViolent>
 	</VAspirE.AspirationDef>
 	<VAspirE.AspirationDef>
 		<defName>VAspirE_ReadAmazingBook</defName>

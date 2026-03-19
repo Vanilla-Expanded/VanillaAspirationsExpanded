@@ -159,6 +159,7 @@ public class Dialog_GrowthMomentChoices_Aspirations : Dialog_GrowthMomentChoices
             {
                 letter.MakeAspirationChoices(chosenAspirations);
                 letter.MakeChoices(chosenPassions, chosenTrait);
+                letter.pawn.needs.TryGetNeed<Need_Fulfillment>().growthMomentReceived = true;
                 Close();
                 Find.LetterStack.RemoveLetter(letter);
             }
