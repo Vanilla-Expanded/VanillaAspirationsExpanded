@@ -36,8 +36,8 @@ public static class SatisfactionPatches
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(InspirationHandler), nameof(InspirationHandler.TryStartInspiration)),
             postfix: new(typeof(SatisfactionPatches), nameof(OnInspiration)));
-        harm.Patch(AccessTools.Method(typeof(QualityUtility), nameof(QualityUtility.GenerateQualityCreatedByPawn), new[] { typeof(Pawn), typeof(SkillDef), typeof(bool) }),
-            postfix: new(typeof(SatisfactionPatches), nameof(CheckQuality)));
+        harm.Patch(AccessTools.Method(typeof(QualityUtility), nameof(QualityUtility.SendCraftNotification), [typeof(Thing), typeof(Pawn)]),
+            prefix: new(typeof(SatisfactionPatches), nameof(CheckQuality)));
         harm.Patch(AccessTools.Method(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.Wear)),
             postfix: new(typeof(SatisfactionPatches), nameof(CheckGeneral)));
         harm.Patch(AccessTools.Method(typeof(RecordsUtility), nameof(RecordsUtility.Notify_PawnKilled)),
@@ -91,10 +91,10 @@ public static class SatisfactionPatches
             ___pawn?.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_GetInspiration);
     }
 
-    public static void CheckQuality(Pawn pawn, QualityCategory __result)
+    public static void CheckQuality(Thing thing, Pawn worker)
     {
-        if (__result == QualityCategory.Legendary)
-            pawn?.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_CreateLegendary);
+        if (thing.TryGetComp<CompQuality>()?.Quality == QualityCategory.Legendary)
+            worker?.needs?.Fulfillment()?.Complete(AspirationDefOf.VAspirE_CreateLegendary);
     }
 
     public static void OnPawnKilled(Pawn killed, Pawn killer)
