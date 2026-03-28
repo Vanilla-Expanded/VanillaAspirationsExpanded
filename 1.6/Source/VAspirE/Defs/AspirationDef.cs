@@ -249,7 +249,7 @@ public class AspirationWorker
 
         if (ModsConfig.BiotechActive && !def.invalidXenotypes.NullOrEmpty() && def.invalidXenotypes.Contains(pawn.genes?.Xenotype)) return false;
 
-        if (def.invalidNonViolent  && pawn.WorkTagIsDisabled(WorkTags.Violent)) return false;
+        if (def.invalidNonViolent  && AspirationsUtility.WorkTagIsDisabledMinusHediffs(WorkTags.Violent,pawn)) return false;
 
         if (def.requiredTrait != null && pawn.story?.traits?.HasTrait(def.requiredTrait)==false) return false;
 

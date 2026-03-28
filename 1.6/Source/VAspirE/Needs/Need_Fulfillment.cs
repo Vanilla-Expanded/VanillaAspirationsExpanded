@@ -11,14 +11,15 @@ public class Need_Fulfillment : Need
 {
     public List<AspirationDef> Aspirations;
     private List<int> completedTicks;
-   
+    public int aspirationsForThisPawn;
 
     public Need_Fulfillment(Pawn pawn) : base(pawn) =>
         threshPercents = new()
         {
-            0.25f,
-            0.5f,
-            0.75f
+            0.2f,
+            0.4f,
+            0.6f,
+            0.8f
         };
 
     public override float MaxLevel => 5;
@@ -40,6 +41,7 @@ public class Need_Fulfillment : Need
         completedTicks = new();
         Rand.PushState(pawn.thingIDNumber);
         var num = Rand.Bool ? 4 : 5;
+        aspirationsForThisPawn = num;
         for (var i = 0; i < num; i++)
             if (DefDatabase<AspirationDef>.AllDefs
                .Where(aspirationDef => aspirationDef.Worker.ValidOn(pawn) && !Aspirations.Contains(aspirationDef) && VanillaAspirationsExpanded_Mod.settings.aspirationStates[aspirationDef.defName])
@@ -84,7 +86,7 @@ public class Need_Fulfillment : Need
         var tooltipRect = rectForTooltip ?? rect;
         var margin = customMargin >= 0f ? customMargin : 14f + 15f;
         tooltipRect.height += (rect.width - margin * 2) / 10;
-        var aspirsRect = new Rect(rect.x + margin, rect.y + rect.height - 10, rect.width - margin * 2f, (rect.width - margin * 2) / 5);
+        var aspirsRect = new Rect(rect.x + margin, rect.y + rect.height - 10, rect.width - margin * 2f, (rect.width - margin * 2) / aspirationsForThisPawn);
         for (var i = 0; i < Aspirations.Count; i++)
         {
             var aspirRect = aspirsRect;
@@ -172,7 +174,8 @@ public class Need_Fulfillment : Need
         base.ExposeData();
         Scribe_Collections.Look(ref Aspirations, "aspirations", LookMode.Def);
         Scribe_Collections.Look(ref completedTicks, nameof(completedTicks), LookMode.Value);
-       
+        Scribe_Values.Look(ref aspirationsForThisPawn, nameof(aspirationsForThisPawn));
+
 
     }
 }
