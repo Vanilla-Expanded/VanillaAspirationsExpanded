@@ -11,7 +11,7 @@ public class Need_Fulfillment : Need
 {
     public List<AspirationDef> Aspirations;
     private List<int> completedTicks;
-    public int aspirationsForThisPawn;
+    public int aspirationsForThisPawn =4;
 
     public Need_Fulfillment(Pawn pawn) : base(pawn) =>
         threshPercents = new()
