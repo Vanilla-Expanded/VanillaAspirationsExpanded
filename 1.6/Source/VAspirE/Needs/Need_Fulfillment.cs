@@ -174,7 +174,7 @@ public class Need_Fulfillment : Need
         base.ExposeData();
         Scribe_Collections.Look(ref Aspirations, "aspirations", LookMode.Def);
         Scribe_Collections.Look(ref completedTicks, nameof(completedTicks), LookMode.Value);
-        Scribe_Values.Look(ref aspirationsForThisPawn, nameof(aspirationsForThisPawn));
+        Scribe_Values.Look(ref aspirationsForThisPawn, nameof(aspirationsForThisPawn),4);
 
 
     }
