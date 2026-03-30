@@ -27,7 +27,6 @@ Colonists may have a number of aspirations, some may be easier to achieve, while
 		</li>
 	</modDependencies>
 	<loadAfter>
-		
 		<li>OskarPotocki.VanillaFactionsExpanded.Core</li>
 	</loadAfter>
 </ModMetaData>
