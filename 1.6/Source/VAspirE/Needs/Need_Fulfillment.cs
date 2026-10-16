@@ -52,7 +52,10 @@ public class Need_Fulfillment : Need
             }
 
         Rand.PopState();
-        CheckCompletion(true);
+        // When loading a save, ExposeData replaces these aspirations right after, and the world
+        // (e.g. Faction.OfEmpire) is not available yet, so only check completion outside of loading.
+        if (Scribe.mode == LoadSaveMode.Inactive)
+            CheckCompletion(true);
     }
 
     public void SetAspirations(List<AspirationDef> aspirationDefs)
